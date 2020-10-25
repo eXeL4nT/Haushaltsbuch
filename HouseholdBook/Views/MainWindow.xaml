@@ -1,0 +1,29 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HouseholdBook"
+        xmlns:Models="clr-namespace:HouseholdBook.Models" x:Class="HouseholdBook.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <DockPanel Margin="0,0,0,354">
+            <Button Name="btnMainRefresh" Content="Aktualisieren" Click="BtnMainRefresh_Click"/>
+            <Button Name="btnMainAddBooking" Content="Hinzufügen" Click="BtnMainAddBooking_Click"/>
+        </DockPanel>
+        <DockPanel Margin="0,80,0,0">
+            <DataGrid x:Name="dataGridBookings" AutoGenerateColumns="False" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="+/-" Binding="{Binding Path=Type.Name}" Width="*"/>
+                    <DataGridTextColumn Header="Datum" Binding="{Binding Path=Date}" Width="*"/>
+                    <DataGridTextColumn Header="Titel" Binding="{Binding Path=Title}" Width="*"/>
+                    <DataGridTextColumn Header="Betrag" Binding="{Binding Path=Amount}" Width="*"/>
+                    <DataGridTextColumn Header="Kategorie" Binding="{Binding Path=Category.Title}" Width="*"/>
+                    <DataGridTextColumn Header="Konto" Binding="{Binding Path=BankAccount.Name}" Width="*"/>
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </DockPanel>
+    </Grid>
+</Window>
