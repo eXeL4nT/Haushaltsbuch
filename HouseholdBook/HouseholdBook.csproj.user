@@ -7,12 +7,18 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Views\AddBookingView.xaml.cs">
+    <Compile Update="Views\AddIncomeBookingView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AddOutgoingBookingView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Views\AddBookingView.xaml">
+    <Page Update="Views\AddIncomeBookingView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AddOutgoingBookingView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\MainWindow.xaml">

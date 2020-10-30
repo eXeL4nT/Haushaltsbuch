@@ -1,14 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "Hgc8EfLnisrDRmRZo4QpfL43Qk1U+TVWpMs5n9ObmRHOG1UEH5Vno11pU8k0eR2jtmbUMGNnTbv3/PCunqkbsg==",
+  "dgSpecHash": "L0ntKC7OHBpFZNmIgV71YkEeTpR7JMFzM/fgkYJmEhurRHAfci1S5tabfrv/Oz0rsK2TZtrRunsVaPvFCjjNYQ==",
   "success": true,
   "projectFilePath": "E:\\Programmieren\\.NET\\WPF\\HouseholdBook\\HouseholdBook\\HouseholdBook.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\boehm\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
+    "C:\\Users\\boehm\\.nuget\\packages\\dragablz\\0.0.3.223\\dragablz.0.0.3.223.nupkg.sha512",
     "C:\\Users\\boehm\\.nuget\\packages\\google.protobuf\\3.11.4\\google.protobuf.3.11.4.nupkg.sha512",
     "C:\\Users\\boehm\\.nuget\\packages\\k4os.compression.lz4\\1.1.11\\k4os.compression.lz4.1.1.11.nupkg.sha512",
     "C:\\Users\\boehm\\.nuget\\packages\\k4os.compression.lz4.streams\\1.1.11\\k4os.compression.lz4.streams.1.1.11.nupkg.sha512",
     "C:\\Users\\boehm\\.nuget\\packages\\k4os.hash.xxhash\\1.0.6\\k4os.hash.xxhash.1.0.6.nupkg.sha512",
+    "C:\\Users\\boehm\\.nuget\\packages\\materialdesigncolors\\1.2.7\\materialdesigncolors.1.2.7.nupkg.sha512",
+    "C:\\Users\\boehm\\.nuget\\packages\\materialdesignthemes\\3.2.0\\materialdesignthemes.3.2.0.nupkg.sha512",
     "C:\\Users\\boehm\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\boehm\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\boehm\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

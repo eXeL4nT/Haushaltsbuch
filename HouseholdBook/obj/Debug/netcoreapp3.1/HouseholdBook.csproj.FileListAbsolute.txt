@@ -47,8 +47,13 @@ E:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\bin\Debug\netcoreapp3.1\Sy
 E:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
 E:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\obj\Debug\netcoreapp3.1\HouseholdBook.csproj.CoreCompileInputs.cache
 E:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\obj\Debug\netcoreapp3.1\HouseholdBook.csproj.CopyComplete
-E:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\obj\Debug\netcoreapp3.1\Views\AddBookingView.g.cs
 E:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\obj\Debug\netcoreapp3.1\Views\MainWindow.g.cs
-E:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\obj\Debug\netcoreapp3.1\Views\AddBookingView.baml
 E:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\obj\Debug\netcoreapp3.1\Views\MainWindow.baml
 E:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
+E:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\bin\Debug\netcoreapp3.1\Dragablz.dll
+E:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\bin\Debug\netcoreapp3.1\MaterialDesignColors.dll
+E:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\bin\Debug\netcoreapp3.1\MaterialDesignThemes.Wpf.dll
+E:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\obj\Debug\netcoreapp3.1\Views\AddIncomeBookingView.g.cs
+E:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\obj\Debug\netcoreapp3.1\Views\AddOutgoingBookingView.g.cs
+E:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\obj\Debug\netcoreapp3.1\Views\AddIncomeBookingView.baml
+E:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\obj\Debug\netcoreapp3.1\Views\AddOutgoingBookingView.baml

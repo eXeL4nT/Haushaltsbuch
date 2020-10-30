@@ -1,4 +1,5 @@
 ﻿using HouseholdBook.Models;
+using HouseholdBook.Views;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections;
@@ -26,18 +27,24 @@ namespace HouseholdBook
             LoadData();
         }
 
-
-        private void BtnMainAddBooking_Click(object sender, RoutedEventArgs e)
-        {
-            AddBookingView addBookingWindow = new AddBookingView();
-            addBookingWindow.Show();
-        }
         private void LoadData()
         {
             using HouseholdContext db = new HouseholdContext();
 
             List<Booking> bookings = db.Bookings.Include(t => t.Type).Include(c => c.Category).Include(b => b.BankAccount).ToList();
             dataGridBookings.ItemsSource = bookings;
+        }
+
+        private void BtnMainAddOutgoing_Click(object sender, RoutedEventArgs e)
+        {
+            AddOutgoingBookingView addOutgoingBookingView = new AddOutgoingBookingView();
+            addOutgoingBookingView.Show();
+        }
+
+        private void BtnMainAddIncome_Click(object sender, RoutedEventArgs e)
+        {
+            AddIncomeBookingView addIncomeBookingView = new AddIncomeBookingView();
+            addIncomeBookingView.Show();
         }
     }
 }

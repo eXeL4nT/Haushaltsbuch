@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 E:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\App.xaml
-2756382507
+3-268355737
 
-28-2050611972
-220-978141324
-Views\AddBookingView.xaml;Views\MainWindow.xaml;
+29-2038164093
+2231739661694
+Views\AddIncomeBookingView.xaml;Views\AddOutgoingBookingView.xaml;Views\MainWindow.xaml;
 
 False
 

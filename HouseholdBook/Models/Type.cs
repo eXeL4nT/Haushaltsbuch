@@ -8,5 +8,7 @@ namespace HouseholdBook.Models
     {
         public int TypeId { get; private set; }
         public string Name { get; private set; }
+
+        public List<Booking> Bookings { get; set; }
     }
 }
