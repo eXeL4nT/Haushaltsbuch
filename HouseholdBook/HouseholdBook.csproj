@@ -24,10 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Views\add.png" />
-    <Resource Include="Views\add_out.png" />
-    <Resource Include="Views\aktualisierung.png" />
-    <Resource Include="Views\edit.png" />
+    <Resource Include="Resources\Img\add_in.png" />
+    <Resource Include="Resources\Img\add_out.png" />
+    <Resource Include="Resources\Img\refresh.png" />
+    <Resource Include="Resources\Img\edit.png" />
   </ItemGroup>
 
 </Project>
