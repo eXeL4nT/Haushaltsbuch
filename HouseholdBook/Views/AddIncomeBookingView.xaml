@@ -3,65 +3,106 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HouseholdBook"
         xmlns:models="clr-namespace:HouseholdBook.Models"
         xmlns:rules="clr-namespace:HouseholdBook.Rules"
         mc:Ignorable="d"
-        Title="AddBooking" Height="290" Width="300">
-    
+        FontSize="14"
+        Title="AddBooking" Height="245" Width="320">
+
     <Window.Resources>
+        <!--
+        <ResourceDictionary>
+            
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        -->
+
         <models:Booking x:Key="booking"/>
 
-        <Style TargetType="{x:Type TextBox}" x:Key="validationStyle">
-            <Setter Property="Validation.ErrorTemplate">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <DockPanel LastChildFill="True">
-                            <TextBlock DockPanel.Dock="Bottom" Foreground="Red" FontSize="8pt" FontStyle="Italic" Text="{Binding ElementName=MyAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"/>
-                            <Border BorderBrush="Red" BorderThickness="1">
-                                <AdornedElementPlaceholder Name="MyAdorner" />
-                            </Border>
-                        </DockPanel>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        <ControlTemplate x:Key="ValidationTemplate">
+            <Border BorderBrush="Red" BorderThickness="1">
+                <Grid Background="Transparent" ToolTip="{Binding Path=[0].ErrorContent}">
+                    <AdornedElementPlaceholder />
+                </Grid>
+            </Border>
+        </ControlTemplate>
     </Window.Resources>
 
-    <DockPanel LastChildFill="False">
-        <Grid DockPanel.Dock="Top">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+    <StackPanel>
 
-            <Label Grid.Row="0" Grid.Column="0" Content="Titel"/>
-            <TextBox Grid.Row="1" Grid.Column="0" Name="tBoxAddBookingTitle" Style="{StaticResource validationStyle}">
+        <StackPanel Margin="5, 5, 5, 0">
+            <Label Content="Titel"/>
+            <TextBox x:Name="textBoxTitle" Validation.ErrorTemplate="{StaticResource ValidationTemplate}">
                 <TextBox.Text>
                     <Binding Path="Title" Source="{StaticResource booking}" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
-                            <rules:BookingTitleRule ValidatesOnTargetUpdated="True" />
+                            <rules:BookingTitleValidationRule Length="5" />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-        </Grid>
-        <Grid DockPanel.Dock="Top">
+        </StackPanel>
+
+        <Grid Margin="5">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Row="0" Grid.Column="0">0 0</Label>
-            <Label Grid.Row="0" Grid.Column="1">0 1</Label>
-            <Label Grid.Row="1" Grid.Column="0">1 0</Label>
-            <Label Grid.Row="1" Grid.Column="1">1 1</Label>
+            <StackPanel Margin="0, 0, 5, 0" Grid.Row="0" Grid.Column="0">
+                <Label Content="Betrag"/>
+                <TextBox Name="textBoxAmount" Validation.ErrorTemplate="{StaticResource ValidationTemplate}">
+                    <TextBox.Text>
+                        <Binding Path="Amount" Source="{StaticResource booking}" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <rules:BookingAmountValidationRule Min="0" Max="99999"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+            </StackPanel>
+
+            <DatePicker Name="datePickerBooking" Margin="5, 28, 0, 0" Grid.Row="0" Grid.Column="1"/>
         </Grid>
-    </DockPanel>
+
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <ComboBox Name="comboBoxBankAccount" Initialized="ComboBoxBankAccount_Initialized" Margin="0, 0, 5, 5" Grid.Row="0" Grid.Column="0"/>
+            <ComboBox Name="comboBoxCategory" Initialized="ComboBoxCategory_Initialized" Margin="5, 0, 0, 5" Grid.Row="0" Grid.Column="1"/>
+        </Grid>
+
+        <Button Name="buttonAdd" Margin="5" Content="Hinzufügen" Click="ButtonAdd_Click">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=textBoxTitle}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=textBoxAmount}" Value="False"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+    </StackPanel>
 </Window>

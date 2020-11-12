@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace HouseholdBook
 {
@@ -11,46 +12,60 @@ namespace HouseholdBook
     /// </summary>
     public partial class AddIncomeBookingView : Window
     {
+        private HouseholdContext objContext = new HouseholdContext();
+
         public AddIncomeBookingView()
         {
             InitializeComponent();
         }
 
-        private void btnAddBooking_Click(object sender, RoutedEventArgs e)
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            using HouseholdContext db = new HouseholdContext();
-            
-            //Booking newBooking = new Booking { Title = tBoxAddBookingTitle.Text, Amount = Double.Parse(tBoxAddBookingAmount.Text), Date = dPickerAddBooking.SelectedDate.ToString(), BankAccount = (BankAccount) cBoxAddBookingBankAccount.SelectedItem, Category = (Category) cBoxAddBookingCategory.SelectedItem};
-            //db.Add(newBooking);
-            //db.SaveChanges();
+            objContext.Bookings.Add(CreateBookingEntry());
+            objContext.SaveChanges();
         }
 
-        private void cBoxAddBookingCategory_Initialized(object sender, EventArgs e)
+        private void ComboBoxCategory_Initialized(object sender, EventArgs e)
         {
-            using HouseholdContext db = new HouseholdContext();
-
-            List<Category> categories = db.Categories.ToList();
+            List<Category> categories = objContext.Categories.ToList();
 
             foreach (Category category in categories)
             {
-                //cBoxAddBookingCategory.Items.Add(category.Title);
+                comboBoxCategory.Items.Add(category.Title);
             }
 
-            //cBoxAddBookingCategory.SelectedIndex = 0;
+            comboBoxCategory.SelectedIndex = 0;
         }
 
-        private void cBoxAddBookingBankAccount_Initialized(object sender, EventArgs e)
+        private void ComboBoxBankAccount_Initialized(object sender, EventArgs e)
         {
-            using HouseholdContext db = new HouseholdContext();
-
-            List<BankAccount> bankAccounts = db.BankAccounts.ToList();
+            List<BankAccount> bankAccounts = objContext.BankAccounts.ToList();
 
             foreach (BankAccount bankAccount in bankAccounts)
             {
-                //cBoxAddBookingBankAccount.Items.Add(bankAccount.Name);
+                comboBoxBankAccount.Items.Add(bankAccount.Name);
             }
 
-            //cBoxAddBookingBankAccount.SelectedIndex = 0;
+            comboBoxBankAccount.SelectedIndex = 0;
+        }
+
+        private Booking CreateBookingEntry()
+        {
+            Category bookingCategory = SearchCategory(comboBoxCategory.SelectedItem.ToString());
+            BankAccount bookingBankAccount = SearchBankAccount(comboBoxBankAccount.SelectedItem.ToString());
+            DateTime bookingDate = (DateTime)datePickerBooking.SelectedDate;
+
+            return new Booking { Title = textBoxTitle.Text, Amount = Double.Parse(textBoxAmount.Text), Date = bookingDate.ToString("dd.MM.yyyy"), Category = bookingCategory, BankAccount = bookingBankAccount };
+        }
+
+        private BankAccount SearchBankAccount(string selectedBankAccount)
+        {
+            return objContext.BankAccounts.Where(bankAccount => bankAccount.Name.Contains(selectedBankAccount)).FirstOrDefault();
+        }
+
+        private Category SearchCategory(string selectedCategory)
+        {
+            return objContext.Categories.Where(category => category.Title.Contains(selectedCategory)).FirstOrDefault();
         }
     }
 }

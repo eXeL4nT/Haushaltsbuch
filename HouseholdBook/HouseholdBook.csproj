@@ -7,13 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Views\add.png" />
-    <None Remove="Views\add_out.png" />
-    <None Remove="Views\aktualisierung.png" />
-    <None Remove="Views\edit.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Dragablz" Version="0.0.3.223" />
     <PackageReference Include="MaterialDesignThemes" Version="3.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9">
@@ -28,6 +21,7 @@
     <Resource Include="Resources\Img\add_out.png" />
     <Resource Include="Resources\Img\refresh.png" />
     <Resource Include="Resources\Img\edit.png" />
+	<Resource Include="Resources\Img\trash.png" />
   </ItemGroup>
 
 </Project>

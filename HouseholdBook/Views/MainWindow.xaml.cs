@@ -1,12 +1,13 @@
 ﻿using HouseholdBook.Models;
 using HouseholdBook.Views;
 using Microsoft.EntityFrameworkCore;
+using MySqlX.XDevAPI.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Windows;
-
 
 namespace HouseholdBook
 {
@@ -15,6 +16,8 @@ namespace HouseholdBook
     /// </summary>
     public partial class MainWindow : Window
     {
+        private HouseholdContext objContext = new HouseholdContext();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -22,29 +25,43 @@ namespace HouseholdBook
             LoadData();
         }
 
-        private void BtnMainRefresh_Click(object sender, RoutedEventArgs e)
-        {
-            LoadData();
-        }
+        private void BtnMainRefresh_Click(object sender, RoutedEventArgs e) => LoadData();
 
-        private void LoadData()
+        private void BtnMainDelete_Click(object sender, RoutedEventArgs e)
         {
-            using HouseholdContext db = new HouseholdContext();
+            MessageBoxResult result = MessageBox.Show("Löschen?", "Löschen", MessageBoxButton.YesNo);
+            
+            if (result == MessageBoxResult.Yes)
+            {
+                int bookingId = (dataGridBookings.SelectedItem as Booking).BookingId;
+                Booking booking = objContext.Bookings.FirstOrDefault(id => id.BookingId == bookingId);
+                objContext.Bookings.Remove(booking);
+                objContext.SaveChanges();
 
-            List<Booking> bookings = db.Bookings.Include(t => t.Type).Include(c => c.Category).Include(b => b.BankAccount).ToList();
-            dataGridBookings.ItemsSource = bookings;
+                LoadData();
+            }
         }
 
         private void BtnMainAddOutgoing_Click(object sender, RoutedEventArgs e)
         {
-            AddOutgoingBookingView addOutgoingBookingView = new AddOutgoingBookingView();
-            addOutgoingBookingView.Show();
+            AddOutgoingBookingView addOutgoingBookingView = new AddOutgoingBookingView
+            {
+                Top = Application.Current.MainWindow.Top,
+                Left = Application.Current.MainWindow.Left
+            };
+            addOutgoingBookingView.ShowDialog();
         }
 
         private void BtnMainAddIncome_Click(object sender, RoutedEventArgs e)
         {
-            AddIncomeBookingView addIncomeBookingView = new AddIncomeBookingView();
-            addIncomeBookingView.Show();
+            AddIncomeBookingView addIncomeBookingView = new AddIncomeBookingView
+            {
+                Top = Application.Current.MainWindow.Top,
+                Left = Application.Current.MainWindow.Left
+            };
+            addIncomeBookingView.ShowDialog();
         }
+
+        private void LoadData() => dataGridBookings.ItemsSource = objContext.Bookings.Include(t => t.Type).Include(c => c.Category).Include(b => b.BankAccount).ToList();
     }
 }
