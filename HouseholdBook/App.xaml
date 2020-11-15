@@ -1,9 +1,34 @@
-﻿<Application x:Class="HouseholdBook.App"
+﻿<Application x:Class="HouseholdBook.WPF.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:HouseholdBook"
-             StartupUri="Views/MainWindow.xaml">
+             xmlns:views="clr-namespace:HouseholdBook.WPF.Views"
+             xmlns:viewmodels="clr-namespace:HouseholdBook.WPF.ViewModels"
+             xmlns:local="clr-namespace:HouseholdBook.WPF">
     <Application.Resources>
-         
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/Common.xaml"/>
+                <ResourceDictionary Source="/Styles/ToolBar.xaml"/>
+                <ResourceDictionary Source="/Styles/Overview.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewmodels:OverviewViewModel}">
+                <views:OverviewView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:AddIncomeViewModel}">
+                <views:AddIncomeView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:AddOutgoingViewModel}">
+                <views:AddOutgoingView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:EditBookingViewModel}">
+                <views:EditBookingView/>
+            </DataTemplate>
+        </ResourceDictionary>
+        
     </Application.Resources>
 </Application>

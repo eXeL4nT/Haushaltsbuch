@@ -1,5 +1,7 @@
 ﻿
-
-FE:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\Views\AddIncomeBookingView.xaml;;
-FE:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\Views\AddOutgoingBookingView.xaml;;
+FE:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\App.xaml;;
+FE:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\Views\AddIncomeView.xaml;;
+FE:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\Views\AddOutgoingView.xaml;;
+FE:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\Views\EditBookingView.xaml;;
+FE:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\Views\OverviewView.xaml;;
 

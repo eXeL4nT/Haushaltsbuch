@@ -8,13 +8,13 @@ E:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\obj\Debug\netcoreapp3.1\
 HouseholdBook
 none
 false
-TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
+TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 E:\Programmieren\.NET\WPF\HouseholdBook\HouseholdBook\App.xaml
-3-268355737
+51388734121
 
-31-1059327817
-2231739661694
-Views\AddIncomeBookingView.xaml;Views\AddOutgoingBookingView.xaml;Views\MainWindow.xaml;
+251891832492
+1921654412462
+MainWindow.xaml;Views\AddIncomeView.xaml;Views\AddOutgoingView.xaml;Views\EditBookingView.xaml;Views\OverviewView.xaml;
 
 False
 

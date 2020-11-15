@@ -16,15 +16,6 @@
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
         }
       },
-      "Dragablz/0.0.3.223": {
-        "type": "package",
-        "compile": {
-          "lib/netcoreapp3.0/Dragablz.dll": {}
-        },
-        "runtime": {
-          "lib/netcoreapp3.0/Dragablz.dll": {}
-        }
-      },
       "Google.Protobuf/3.11.4": {
         "type": "package",
         "dependencies": {
@@ -74,30 +65,6 @@
           "lib/netstandard2.0/K4os.Hash.xxHash.dll": {}
         }
       },
-      "MaterialDesignColors/1.2.7": {
-        "type": "package",
-        "compile": {
-          "lib/netcoreapp3.1/MaterialDesignColors.dll": {}
-        },
-        "runtime": {
-          "lib/netcoreapp3.1/MaterialDesignColors.dll": {}
-        }
-      },
-      "MaterialDesignThemes/3.2.0": {
-        "type": "package",
-        "dependencies": {
-          "MaterialDesignColors": "[1.2.7, 2.0.0)"
-        },
-        "compile": {
-          "lib/netcoreapp3.1/MaterialDesignThemes.Wpf.dll": {}
-        },
-        "runtime": {
-          "lib/netcoreapp3.1/MaterialDesignThemes.Wpf.dll": {}
-        },
-        "build": {
-          "build/MaterialDesignThemes.targets": {}
-        }
-      },
       "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
         "type": "package",
         "compile": {
@@ -116,25 +83,43 @@
           "lib/netcoreapp2.1/Microsoft.Bcl.HashCode.dll": {}
         }
       },
-      "Microsoft.CSharp/4.7.0": {
+      "Microsoft.CSharp/4.0.1": {
         "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Dynamic.Runtime": "4.0.11",
+          "System.Globalization": "4.0.11",
+          "System.Linq": "4.1.0",
+          "System.Linq.Expressions": "4.1.0",
+          "System.ObjectModel": "4.0.12",
+          "System.Reflection": "4.1.0",
+          "System.Reflection.Extensions": "4.0.1",
+          "System.Reflection.Primitives": "4.0.1",
+          "System.Reflection.TypeExtensions": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.InteropServices": "4.1.0",
+          "System.Threading": "4.0.11"
+        },
         "compile": {
-          "ref/netcoreapp2.0/_._": {}
+          "ref/netstandard1.0/Microsoft.CSharp.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp2.0/_._": {}
+          "lib/netstandard1.3/Microsoft.CSharp.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore/3.1.9": {
+      "Microsoft.EntityFrameworkCore/3.1.10": {
         "type": "package",
         "dependencies": {
           "Microsoft.Bcl.AsyncInterfaces": "1.1.1",
           "Microsoft.Bcl.HashCode": "1.1.0",
-          "Microsoft.EntityFrameworkCore.Abstractions": "3.1.9",
-          "Microsoft.EntityFrameworkCore.Analyzers": "3.1.9",
-          "Microsoft.Extensions.Caching.Memory": "3.1.9",
-          "Microsoft.Extensions.DependencyInjection": "3.1.9",
-          "Microsoft.Extensions.Logging": "3.1.9",
+          "Microsoft.EntityFrameworkCore.Abstractions": "3.1.10",
+          "Microsoft.EntityFrameworkCore.Analyzers": "3.1.10",
+          "Microsoft.Extensions.Caching.Memory": "3.1.10",
+          "Microsoft.Extensions.DependencyInjection": "3.1.10",
+          "Microsoft.Extensions.Logging": "3.1.10",
           "System.Collections.Immutable": "1.7.1",
           "System.ComponentModel.Annotations": "4.7.0",
           "System.Diagnostics.DiagnosticSource": "4.7.1"
@@ -146,7 +131,7 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Abstractions/3.1.9": {
+      "Microsoft.EntityFrameworkCore.Abstractions/3.1.10": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {}
@@ -155,7 +140,7 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Analyzers/3.1.9": {
+      "Microsoft.EntityFrameworkCore.Analyzers/3.1.10": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/_._": {}
@@ -164,26 +149,10 @@
           "lib/netstandard2.0/_._": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Design/3.1.9": {
+      "Microsoft.EntityFrameworkCore.Relational/3.1.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.CSharp": "4.7.0",
-          "Microsoft.EntityFrameworkCore.Relational": "3.1.9"
-        },
-        "compile": {
-          "lib/netstandard2.0/_._": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll": {}
-        },
-        "build": {
-          "build/netcoreapp2.0/Microsoft.EntityFrameworkCore.Design.props": {}
-        }
-      },
-      "Microsoft.EntityFrameworkCore.Relational/3.1.9": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "3.1.9"
+          "Microsoft.EntityFrameworkCore": "3.1.1"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll": {}
@@ -192,22 +161,10 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Tools/3.1.9": {
+      "Microsoft.Extensions.Caching.Abstractions/3.1.10": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Design": "3.1.9"
-        },
-        "compile": {
-          "lib/netstandard2.0/_._": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/_._": {}
-        }
-      },
-      "Microsoft.Extensions.Caching.Abstractions/3.1.9": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Primitives": "3.1.9"
+          "Microsoft.Extensions.Primitives": "3.1.10"
         },
         "compile": {
           "lib/netcoreapp3.1/Microsoft.Extensions.Caching.Abstractions.dll": {}
@@ -216,13 +173,13 @@
           "lib/netcoreapp3.1/Microsoft.Extensions.Caching.Abstractions.dll": {}
         }
       },
-      "Microsoft.Extensions.Caching.Memory/3.1.9": {
+      "Microsoft.Extensions.Caching.Memory/3.1.10": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Caching.Abstractions": "3.1.9",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.9",
-          "Microsoft.Extensions.Logging.Abstractions": "3.1.9",
-          "Microsoft.Extensions.Options": "3.1.9"
+          "Microsoft.Extensions.Caching.Abstractions": "3.1.10",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.10",
+          "Microsoft.Extensions.Logging.Abstractions": "3.1.10",
+          "Microsoft.Extensions.Options": "3.1.10"
         },
         "compile": {
           "lib/netcoreapp3.1/Microsoft.Extensions.Caching.Memory.dll": {}
@@ -231,10 +188,10 @@
           "lib/netcoreapp3.1/Microsoft.Extensions.Caching.Memory.dll": {}
         }
       },
-      "Microsoft.Extensions.Configuration/3.1.9": {
+      "Microsoft.Extensions.Configuration/3.1.10": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "3.1.9"
+          "Microsoft.Extensions.Configuration.Abstractions": "3.1.10"
         },
         "compile": {
           "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.dll": {}
@@ -243,10 +200,10 @@
           "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.dll": {}
         }
       },
-      "Microsoft.Extensions.Configuration.Abstractions/3.1.9": {
+      "Microsoft.Extensions.Configuration.Abstractions/3.1.10": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Primitives": "3.1.9"
+          "Microsoft.Extensions.Primitives": "3.1.10"
         },
         "compile": {
           "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.Abstractions.dll": {}
@@ -255,10 +212,10 @@
           "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.Abstractions.dll": {}
         }
       },
-      "Microsoft.Extensions.Configuration.Binder/3.1.9": {
+      "Microsoft.Extensions.Configuration.Binder/3.1.10": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Configuration": "3.1.9"
+          "Microsoft.Extensions.Configuration": "3.1.10"
         },
         "compile": {
           "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.Binder.dll": {}
@@ -267,10 +224,10 @@
           "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.Binder.dll": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection/3.1.9": {
+      "Microsoft.Extensions.DependencyInjection/3.1.10": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.9"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.10"
         },
         "compile": {
           "lib/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.dll": {}
@@ -279,7 +236,7 @@
           "lib/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.dll": {}
         }
       },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/3.1.9": {
+      "Microsoft.Extensions.DependencyInjection.Abstractions/3.1.10": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
@@ -288,13 +245,13 @@
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
         }
       },
-      "Microsoft.Extensions.Logging/3.1.9": {
+      "Microsoft.Extensions.Logging/3.1.10": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Configuration.Binder": "3.1.9",
-          "Microsoft.Extensions.DependencyInjection": "3.1.9",
-          "Microsoft.Extensions.Logging.Abstractions": "3.1.9",
-          "Microsoft.Extensions.Options": "3.1.9"
+          "Microsoft.Extensions.Configuration.Binder": "3.1.10",
+          "Microsoft.Extensions.DependencyInjection": "3.1.10",
+          "Microsoft.Extensions.Logging.Abstractions": "3.1.10",
+          "Microsoft.Extensions.Options": "3.1.10"
         },
         "compile": {
           "lib/netcoreapp3.1/Microsoft.Extensions.Logging.dll": {}
@@ -303,7 +260,7 @@
           "lib/netcoreapp3.1/Microsoft.Extensions.Logging.dll": {}
         }
       },
-      "Microsoft.Extensions.Logging.Abstractions/3.1.9": {
+      "Microsoft.Extensions.Logging.Abstractions/3.1.10": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
@@ -312,11 +269,11 @@
           "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
         }
       },
-      "Microsoft.Extensions.Options/3.1.9": {
+      "Microsoft.Extensions.Options/3.1.10": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.9",
-          "Microsoft.Extensions.Primitives": "3.1.9"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.10",
+          "Microsoft.Extensions.Primitives": "3.1.10"
         },
         "compile": {
           "lib/netcoreapp3.1/Microsoft.Extensions.Options.dll": {}
@@ -325,7 +282,7 @@
           "lib/netcoreapp3.1/Microsoft.Extensions.Options.dll": {}
         }
       },
-      "Microsoft.Extensions.Primitives/3.1.9": {
+      "Microsoft.Extensions.Primitives/3.1.10": {
         "type": "package",
         "compile": {
           "lib/netcoreapp3.1/Microsoft.Extensions.Primitives.dll": {}
@@ -752,6 +709,32 @@
             "assetType": "runtime",
             "rid": "win"
           }
+        }
+      },
+      "System.Dynamic.Runtime/4.0.11": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Diagnostics.Debug": "4.0.11",
+          "System.Globalization": "4.0.11",
+          "System.Linq": "4.1.0",
+          "System.Linq.Expressions": "4.1.0",
+          "System.ObjectModel": "4.0.12",
+          "System.Reflection": "4.1.0",
+          "System.Reflection.Emit": "4.0.1",
+          "System.Reflection.Emit.ILGeneration": "4.0.1",
+          "System.Reflection.Primitives": "4.0.1",
+          "System.Reflection.TypeExtensions": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Threading": "4.0.11"
+        },
+        "compile": {
+          "ref/netstandard1.3/System.Dynamic.Runtime.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.Dynamic.Runtime.dll": {}
         }
       },
       "System.Globalization/4.0.11": {
@@ -1796,6 +1779,31 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
+      },
+      "HouseholdBook.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/HouseholdBook.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HouseholdBook.Domain.dll": {}
+        }
+      },
+      "HouseholdBook.EntityFramework/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "HouseholdBook.Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "3.1.10",
+          "MySql.Data.EntityFrameworkCore": "8.0.22"
+        },
+        "compile": {
+          "bin/placeholder/HouseholdBook.EntityFramework.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/HouseholdBook.EntityFramework.dll": {}
+        }
       }
     }
   },
@@ -1825,308 +1833,6 @@
         "lib/netstandard2.0/BouncyCastle.Crypto.xml",
         "lib/xamarinios/BouncyCastle.Crypto.dll",
         "lib/xamarinios/BouncyCastle.Crypto.xml"
-      ]
-    },
-    "Dragablz/0.0.3.223": {
-      "sha512": "nSDrLkQniVmvCvg4JlbtMYBD3UtHbJkX64vJ701TZT+IfOqfEA7cQU5da5NqACY9GuwK7R6VbtPp4WGZK1uTaQ==",
-      "type": "package",
-      "path": "dragablz/0.0.3.223",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "dragablz.0.0.3.223.nupkg.sha512",
-        "dragablz.nuspec",
-        "lib/net40/Dragablz.dll",
-        "lib/net40/Dragablz.pdb",
-        "lib/net40/Dragablz.xml",
-        "lib/net45/Dragablz.dll",
-        "lib/net45/Dragablz.pdb",
-        "lib/net45/Dragablz.xml",
-        "lib/netcoreapp3.0/Dragablz.dll",
-        "lib/netcoreapp3.0/Dragablz.pdb",
-        "lib/netcoreapp3.0/Dragablz.xml",
-        "src/net40/CanvasOrganiser.cs",
-        "src/net40/ContainerCustomisations.cs",
-        "src/net40/Converters/BooleanAndToVisibilityConverter.cs",
-        "src/net40/Converters/EqualityToBooleanConverter.cs",
-        "src/net40/Converters/EqualityToVisibilityConverter.cs",
-        "src/net40/Converters/ShowDefaultCloseButtonConverter.cs",
-        "src/net40/Core/CollectionTeaser.cs",
-        "src/net40/Core/Extensions.cs",
-        "src/net40/Core/FuncComparer.cs",
-        "src/net40/Core/HitTest.cs",
-        "src/net40/Core/InterTabTransfer.cs",
-        "src/net40/Core/MultiComparer.cs",
-        "src/net40/Core/Native.cs",
-        "src/net40/Core/SystemCommand.cs",
-        "src/net40/Core/TabHeaderDragStartInformation.cs",
-        "src/net40/Core/WindowMessage.cs",
-        "src/net40/DefaultInterLayoutClient.cs",
-        "src/net40/DefaultInterTabClient.cs",
-        "src/net40/Dockablz/Branch.cs",
-        "src/net40/Dockablz/BranchAccessor.cs",
-        "src/net40/Dockablz/BranchItem.cs",
-        "src/net40/Dockablz/BranchResult.cs",
-        "src/net40/Dockablz/CouldBeHeaderedStyleSelector.cs",
-        "src/net40/Dockablz/DropZone.cs",
-        "src/net40/Dockablz/DropZoneLocation.cs",
-        "src/net40/Dockablz/Extensions.cs",
-        "src/net40/Dockablz/Finder.cs",
-        "src/net40/Dockablz/FloatRequestedEvent.cs",
-        "src/net40/Dockablz/FloatTransfer.cs",
-        "src/net40/Dockablz/FloatingItemSnapShot.cs",
-        "src/net40/Dockablz/Layout.cs",
-        "src/net40/Dockablz/LayoutAccessor.cs",
-        "src/net40/Dockablz/LocationReport.cs",
-        "src/net40/Dockablz/LocationReportBuilder.cs",
-        "src/net40/Dockablz/LocationReportException.cs",
-        "src/net40/Dockablz/LocationSnapShot.cs",
-        "src/net40/Dockablz/Tiler.cs",
-        "src/net40/Dockablz/TilerCalculator.cs",
-        "src/net40/DragablzColors.cs",
-        "src/net40/DragablzDragCompletedEventArgs.cs",
-        "src/net40/DragablzDragDeltaEventArgs.cs",
-        "src/net40/DragablzDragStartedEventArgs.cs",
-        "src/net40/DragablzIcon.cs",
-        "src/net40/DragablzItem.cs",
-        "src/net40/DragablzItemEventArgs.cs",
-        "src/net40/DragablzItemsControl.cs",
-        "src/net40/DragablzWindow.cs",
-        "src/net40/EmptyHeaderSizingHint.cs",
-        "src/net40/HeaderedDragablzItem.cs",
-        "src/net40/HeaderedItemViewModel.cs",
-        "src/net40/HorizontalOrganiser.cs",
-        "src/net40/HorizontalPositionMonitor.cs",
-        "src/net40/IInterLayoutClient.cs",
-        "src/net40/IInterTabClient.cs",
-        "src/net40/IItemsOrganiser.cs",
-        "src/net40/IManualInterTabClient.cs",
-        "src/net40/INewTabHost.cs",
-        "src/net40/InterTabController.cs",
-        "src/net40/ItemActionCallbackArgs.cs",
-        "src/net40/LocationChangedEventArgs.cs",
-        "src/net40/LocationHint.cs",
-        "src/net40/MoveItemRequest.cs",
-        "src/net40/NewTabHost.cs",
-        "src/net40/OrderChangedEventArgs.cs",
-        "src/net40/PositionMonitor.cs",
-        "src/net40/Properties/AssemblyInfo.cs",
-        "src/net40/Properties/Resources.Designer.cs",
-        "src/net40/Properties/Settings.Designer.cs",
-        "src/net40/Referenceless/AnonymousDisposable.cs",
-        "src/net40/Referenceless/DefaultDisposable.cs",
-        "src/net40/Referenceless/Disposable.cs",
-        "src/net40/Referenceless/ICancelable.cs",
-        "src/net40/Referenceless/SerialDisposable.cs",
-        "src/net40/StackOrganiser.cs",
-        "src/net40/StackPositionMonitor.cs",
-        "src/net40/StoryboardCompletionListener.cs",
-        "src/net40/TabEmptiedResponse.cs",
-        "src/net40/TabablzControl.cs",
-        "src/net40/TabablzHeaderSizeConverter.cs",
-        "src/net40/TabablzItemStyleSelector.cs",
-        "src/net40/Themes/BrushToRadialGradientBrushConverter.cs",
-        "src/net40/Themes/MaterialDesignAssist.cs",
-        "src/net40/Themes/Ripple.cs",
-        "src/net40/Themes/RippleAssist.cs",
-        "src/net40/Themes/SystemCommandIcon.cs",
-        "src/net40/Trapezoid.cs",
-        "src/net40/VerticalOrganiser.cs",
-        "src/net40/VerticalPositionMonitor.cs",
-        "src/net40/obj/Release/net40/.NETFramework,Version=v4.0.AssemblyAttributes.cs",
-        "src/net40/obj/Release/net40/GeneratedInternalTypeHelper.g.cs",
-        "src/net40/obj/Release/net45/.NETFramework,Version=v4.5.AssemblyAttributes.cs",
-        "src/net40/obj/Release/net45/GeneratedInternalTypeHelper.g.cs",
-        "src/net40/obj/Release/netcoreapp3.0/.NETCoreApp,Version=v3.0.AssemblyAttributes.cs",
-        "src/net40/obj/Release/netcoreapp3.0/GeneratedInternalTypeHelper.g.cs",
-        "src/net45/CanvasOrganiser.cs",
-        "src/net45/ContainerCustomisations.cs",
-        "src/net45/Converters/BooleanAndToVisibilityConverter.cs",
-        "src/net45/Converters/EqualityToBooleanConverter.cs",
-        "src/net45/Converters/EqualityToVisibilityConverter.cs",
-        "src/net45/Converters/ShowDefaultCloseButtonConverter.cs",
-        "src/net45/Core/CollectionTeaser.cs",
-        "src/net45/Core/Extensions.cs",
-        "src/net45/Core/FuncComparer.cs",
-        "src/net45/Core/HitTest.cs",
-        "src/net45/Core/InterTabTransfer.cs",
-        "src/net45/Core/MultiComparer.cs",
-        "src/net45/Core/Native.cs",
-        "src/net45/Core/SystemCommand.cs",
-        "src/net45/Core/TabHeaderDragStartInformation.cs",
-        "src/net45/Core/WindowMessage.cs",
-        "src/net45/DefaultInterLayoutClient.cs",
-        "src/net45/DefaultInterTabClient.cs",
-        "src/net45/Dockablz/Branch.cs",
-        "src/net45/Dockablz/BranchAccessor.cs",
-        "src/net45/Dockablz/BranchItem.cs",
-        "src/net45/Dockablz/BranchResult.cs",
-        "src/net45/Dockablz/CouldBeHeaderedStyleSelector.cs",
-        "src/net45/Dockablz/DropZone.cs",
-        "src/net45/Dockablz/DropZoneLocation.cs",
-        "src/net45/Dockablz/Extensions.cs",
-        "src/net45/Dockablz/Finder.cs",
-        "src/net45/Dockablz/FloatRequestedEvent.cs",
-        "src/net45/Dockablz/FloatTransfer.cs",
-        "src/net45/Dockablz/FloatingItemSnapShot.cs",
-        "src/net45/Dockablz/Layout.cs",
-        "src/net45/Dockablz/LayoutAccessor.cs",
-        "src/net45/Dockablz/LocationReport.cs",
-        "src/net45/Dockablz/LocationReportBuilder.cs",
-        "src/net45/Dockablz/LocationReportException.cs",
-        "src/net45/Dockablz/LocationSnapShot.cs",
-        "src/net45/Dockablz/Tiler.cs",
-        "src/net45/Dockablz/TilerCalculator.cs",
-        "src/net45/DragablzColors.cs",
-        "src/net45/DragablzDragCompletedEventArgs.cs",
-        "src/net45/DragablzDragDeltaEventArgs.cs",
-        "src/net45/DragablzDragStartedEventArgs.cs",
-        "src/net45/DragablzIcon.cs",
-        "src/net45/DragablzItem.cs",
-        "src/net45/DragablzItemEventArgs.cs",
-        "src/net45/DragablzItemsControl.cs",
-        "src/net45/DragablzWindow.cs",
-        "src/net45/EmptyHeaderSizingHint.cs",
-        "src/net45/HeaderedDragablzItem.cs",
-        "src/net45/HeaderedItemViewModel.cs",
-        "src/net45/HorizontalOrganiser.cs",
-        "src/net45/HorizontalPositionMonitor.cs",
-        "src/net45/IInterLayoutClient.cs",
-        "src/net45/IInterTabClient.cs",
-        "src/net45/IItemsOrganiser.cs",
-        "src/net45/IManualInterTabClient.cs",
-        "src/net45/INewTabHost.cs",
-        "src/net45/InterTabController.cs",
-        "src/net45/ItemActionCallbackArgs.cs",
-        "src/net45/LocationChangedEventArgs.cs",
-        "src/net45/LocationHint.cs",
-        "src/net45/MoveItemRequest.cs",
-        "src/net45/NewTabHost.cs",
-        "src/net45/OrderChangedEventArgs.cs",
-        "src/net45/PositionMonitor.cs",
-        "src/net45/Properties/AssemblyInfo.cs",
-        "src/net45/Properties/Resources.Designer.cs",
-        "src/net45/Properties/Settings.Designer.cs",
-        "src/net45/Referenceless/AnonymousDisposable.cs",
-        "src/net45/Referenceless/DefaultDisposable.cs",
-        "src/net45/Referenceless/Disposable.cs",
-        "src/net45/Referenceless/ICancelable.cs",
-        "src/net45/Referenceless/SerialDisposable.cs",
-        "src/net45/StackOrganiser.cs",
-        "src/net45/StackPositionMonitor.cs",
-        "src/net45/StoryboardCompletionListener.cs",
-        "src/net45/TabEmptiedResponse.cs",
-        "src/net45/TabablzControl.cs",
-        "src/net45/TabablzHeaderSizeConverter.cs",
-        "src/net45/TabablzItemStyleSelector.cs",
-        "src/net45/Themes/BrushToRadialGradientBrushConverter.cs",
-        "src/net45/Themes/MaterialDesignAssist.cs",
-        "src/net45/Themes/Ripple.cs",
-        "src/net45/Themes/RippleAssist.cs",
-        "src/net45/Themes/SystemCommandIcon.cs",
-        "src/net45/Trapezoid.cs",
-        "src/net45/VerticalOrganiser.cs",
-        "src/net45/VerticalPositionMonitor.cs",
-        "src/net45/obj/Release/net40/.NETFramework,Version=v4.0.AssemblyAttributes.cs",
-        "src/net45/obj/Release/net40/GeneratedInternalTypeHelper.g.cs",
-        "src/net45/obj/Release/net45/.NETFramework,Version=v4.5.AssemblyAttributes.cs",
-        "src/net45/obj/Release/net45/GeneratedInternalTypeHelper.g.cs",
-        "src/net45/obj/Release/netcoreapp3.0/.NETCoreApp,Version=v3.0.AssemblyAttributes.cs",
-        "src/net45/obj/Release/netcoreapp3.0/GeneratedInternalTypeHelper.g.cs",
-        "src/netcoreapp3.0/CanvasOrganiser.cs",
-        "src/netcoreapp3.0/ContainerCustomisations.cs",
-        "src/netcoreapp3.0/Converters/BooleanAndToVisibilityConverter.cs",
-        "src/netcoreapp3.0/Converters/EqualityToBooleanConverter.cs",
-        "src/netcoreapp3.0/Converters/EqualityToVisibilityConverter.cs",
-        "src/netcoreapp3.0/Converters/ShowDefaultCloseButtonConverter.cs",
-        "src/netcoreapp3.0/Core/CollectionTeaser.cs",
-        "src/netcoreapp3.0/Core/Extensions.cs",
-        "src/netcoreapp3.0/Core/FuncComparer.cs",
-        "src/netcoreapp3.0/Core/HitTest.cs",
-        "src/netcoreapp3.0/Core/InterTabTransfer.cs",
-        "src/netcoreapp3.0/Core/MultiComparer.cs",
-        "src/netcoreapp3.0/Core/Native.cs",
-        "src/netcoreapp3.0/Core/SystemCommand.cs",
-        "src/netcoreapp3.0/Core/TabHeaderDragStartInformation.cs",
-        "src/netcoreapp3.0/Core/WindowMessage.cs",
-        "src/netcoreapp3.0/DefaultInterLayoutClient.cs",
-        "src/netcoreapp3.0/DefaultInterTabClient.cs",
-        "src/netcoreapp3.0/Dockablz/Branch.cs",
-        "src/netcoreapp3.0/Dockablz/BranchAccessor.cs",
-        "src/netcoreapp3.0/Dockablz/BranchItem.cs",
-        "src/netcoreapp3.0/Dockablz/BranchResult.cs",
-        "src/netcoreapp3.0/Dockablz/CouldBeHeaderedStyleSelector.cs",
-        "src/netcoreapp3.0/Dockablz/DropZone.cs",
-        "src/netcoreapp3.0/Dockablz/DropZoneLocation.cs",
-        "src/netcoreapp3.0/Dockablz/Extensions.cs",
-        "src/netcoreapp3.0/Dockablz/Finder.cs",
-        "src/netcoreapp3.0/Dockablz/FloatRequestedEvent.cs",
-        "src/netcoreapp3.0/Dockablz/FloatTransfer.cs",
-        "src/netcoreapp3.0/Dockablz/FloatingItemSnapShot.cs",
-        "src/netcoreapp3.0/Dockablz/Layout.cs",
-        "src/netcoreapp3.0/Dockablz/LayoutAccessor.cs",
-        "src/netcoreapp3.0/Dockablz/LocationReport.cs",
-        "src/netcoreapp3.0/Dockablz/LocationReportBuilder.cs",
-        "src/netcoreapp3.0/Dockablz/LocationReportException.cs",
-        "src/netcoreapp3.0/Dockablz/LocationSnapShot.cs",
-        "src/netcoreapp3.0/Dockablz/Tiler.cs",
-        "src/netcoreapp3.0/Dockablz/TilerCalculator.cs",
-        "src/netcoreapp3.0/DragablzColors.cs",
-        "src/netcoreapp3.0/DragablzDragCompletedEventArgs.cs",
-        "src/netcoreapp3.0/DragablzDragDeltaEventArgs.cs",
-        "src/netcoreapp3.0/DragablzDragStartedEventArgs.cs",
-        "src/netcoreapp3.0/DragablzIcon.cs",
-        "src/netcoreapp3.0/DragablzItem.cs",
-        "src/netcoreapp3.0/DragablzItemEventArgs.cs",
-        "src/netcoreapp3.0/DragablzItemsControl.cs",
-        "src/netcoreapp3.0/DragablzWindow.cs",
-        "src/netcoreapp3.0/EmptyHeaderSizingHint.cs",
-        "src/netcoreapp3.0/HeaderedDragablzItem.cs",
-        "src/netcoreapp3.0/HeaderedItemViewModel.cs",
-        "src/netcoreapp3.0/HorizontalOrganiser.cs",
-        "src/netcoreapp3.0/HorizontalPositionMonitor.cs",
-        "src/netcoreapp3.0/IInterLayoutClient.cs",
-        "src/netcoreapp3.0/IInterTabClient.cs",
-        "src/netcoreapp3.0/IItemsOrganiser.cs",
-        "src/netcoreapp3.0/IManualInterTabClient.cs",
-        "src/netcoreapp3.0/INewTabHost.cs",
-        "src/netcoreapp3.0/InterTabController.cs",
-        "src/netcoreapp3.0/ItemActionCallbackArgs.cs",
-        "src/netcoreapp3.0/LocationChangedEventArgs.cs",
-        "src/netcoreapp3.0/LocationHint.cs",
-        "src/netcoreapp3.0/MoveItemRequest.cs",
-        "src/netcoreapp3.0/NewTabHost.cs",
-        "src/netcoreapp3.0/OrderChangedEventArgs.cs",
-        "src/netcoreapp3.0/PositionMonitor.cs",
-        "src/netcoreapp3.0/Properties/AssemblyInfo.cs",
-        "src/netcoreapp3.0/Properties/Resources.Designer.cs",
-        "src/netcoreapp3.0/Properties/Settings.Designer.cs",
-        "src/netcoreapp3.0/Referenceless/AnonymousDisposable.cs",
-        "src/netcoreapp3.0/Referenceless/DefaultDisposable.cs",
-        "src/netcoreapp3.0/Referenceless/Disposable.cs",
-        "src/netcoreapp3.0/Referenceless/ICancelable.cs",
-        "src/netcoreapp3.0/Referenceless/SerialDisposable.cs",
-        "src/netcoreapp3.0/StackOrganiser.cs",
-        "src/netcoreapp3.0/StackPositionMonitor.cs",
-        "src/netcoreapp3.0/StoryboardCompletionListener.cs",
-        "src/netcoreapp3.0/TabEmptiedResponse.cs",
-        "src/netcoreapp3.0/TabablzControl.cs",
-        "src/netcoreapp3.0/TabablzHeaderSizeConverter.cs",
-        "src/netcoreapp3.0/TabablzItemStyleSelector.cs",
-        "src/netcoreapp3.0/Themes/BrushToRadialGradientBrushConverter.cs",
-        "src/netcoreapp3.0/Themes/MaterialDesignAssist.cs",
-        "src/netcoreapp3.0/Themes/Ripple.cs",
-        "src/netcoreapp3.0/Themes/RippleAssist.cs",
-        "src/netcoreapp3.0/Themes/SystemCommandIcon.cs",
-        "src/netcoreapp3.0/Trapezoid.cs",
-        "src/netcoreapp3.0/VerticalOrganiser.cs",
-        "src/netcoreapp3.0/VerticalPositionMonitor.cs",
-        "src/netcoreapp3.0/obj/Release/net40/.NETFramework,Version=v4.0.AssemblyAttributes.cs",
-        "src/netcoreapp3.0/obj/Release/net40/GeneratedInternalTypeHelper.g.cs",
-        "src/netcoreapp3.0/obj/Release/net45/.NETFramework,Version=v4.5.AssemblyAttributes.cs",
-        "src/netcoreapp3.0/obj/Release/net45/GeneratedInternalTypeHelper.g.cs",
-        "src/netcoreapp3.0/obj/Release/netcoreapp3.0/.NETCoreApp,Version=v3.0.AssemblyAttributes.cs",
-        "src/netcoreapp3.0/obj/Release/netcoreapp3.0/GeneratedInternalTypeHelper.g.cs"
       ]
     },
     "Google.Protobuf/3.11.4": {
@@ -2206,61 +1912,6 @@
         "lib/netstandard2.0/K4os.Hash.xxHash.xml"
       ]
     },
-    "MaterialDesignColors/1.2.7": {
-      "sha512": "e+shDlaSAJcuTArqtfWjVUgAOlwQlgWq8akkzCGe1MvfV1ozmOqqXyWxg5w0vC/3/KZ84wnPUJeI1wzEpI0uJQ==",
-      "type": "package",
-      "path": "materialdesigncolors/1.2.7",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "images/MaterialDesignColors.Icon.png",
-        "lib/net45/MaterialDesignColors.dll",
-        "lib/net45/MaterialDesignColors.pdb",
-        "lib/netcoreapp3.1/MaterialDesignColors.dll",
-        "lib/netcoreapp3.1/MaterialDesignColors.pdb",
-        "materialdesigncolors.1.2.7.nupkg.sha512",
-        "materialdesigncolors.nuspec"
-      ]
-    },
-    "MaterialDesignThemes/3.2.0": {
-      "sha512": "aOZQShQuV7sCWOwO98dYz1S4stmIWDBH+Q6KoR3wDiDyuG7twoGnBDzQBhrxuS16I3GQiG5nfvUjEJFVc/zdKg==",
-      "type": "package",
-      "path": "materialdesignthemes/3.2.0",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "build/MaterialDesignThemes.targets",
-        "build/Resources/Roboto/Roboto-Black.ttf",
-        "build/Resources/Roboto/Roboto-BlackItalic.ttf",
-        "build/Resources/Roboto/Roboto-Bold.ttf",
-        "build/Resources/Roboto/Roboto-BoldItalic.ttf",
-        "build/Resources/Roboto/Roboto-Italic.ttf",
-        "build/Resources/Roboto/Roboto-Light.ttf",
-        "build/Resources/Roboto/Roboto-LightItalic.ttf",
-        "build/Resources/Roboto/Roboto-Medium.ttf",
-        "build/Resources/Roboto/Roboto-MediumItalic.ttf",
-        "build/Resources/Roboto/Roboto-Regular.ttf",
-        "build/Resources/Roboto/Roboto-Thin.ttf",
-        "build/Resources/Roboto/Roboto-ThinItalic.ttf",
-        "build/Resources/Roboto/RobotoCondensed-Bold.ttf",
-        "build/Resources/Roboto/RobotoCondensed-BoldItalic.ttf",
-        "build/Resources/Roboto/RobotoCondensed-Italic.ttf",
-        "build/Resources/Roboto/RobotoCondensed-Light.ttf",
-        "build/Resources/Roboto/RobotoCondensed-LightItalic.ttf",
-        "build/Resources/Roboto/RobotoCondensed-Regular.ttf",
-        "images/MaterialDesignThemes.Icon.png",
-        "lib/net45/MaterialDesignThemes.Wpf.dll",
-        "lib/net45/MaterialDesignThemes.Wpf.pdb",
-        "lib/net45/MaterialDesignThemes.Wpf.xml",
-        "lib/netcoreapp3.1/MaterialDesignThemes.Wpf.dll",
-        "lib/netcoreapp3.1/MaterialDesignThemes.Wpf.pdb",
-        "lib/netcoreapp3.1/MaterialDesignThemes.Wpf.xml",
-        "materialdesignthemes.3.2.0.nupkg.sha512",
-        "materialdesignthemes.nuspec",
-        "tools/VisualStudioToolsManifest.xml"
-      ]
-    },
     "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
       "sha512": "yuvf07qFWFqtK3P/MRkEKLhn5r2UbSpVueRziSqj0yJQIKFwG1pq9mOayK3zE5qZCTs0CbrwL9M6R8VwqyGy2w==",
       "type": "package",
@@ -2313,25 +1964,21 @@
         "version.txt"
       ]
     },
-    "Microsoft.CSharp/4.7.0": {
-      "sha512": "pTj+D3uJWyN3My70i2Hqo+OXixq3Os2D1nJ2x92FFo6sk8fYS1m1WLNTs0Dc1uPaViH0YvEEwvzddQ7y4rhXmA==",
+    "Microsoft.CSharp/4.0.1": {
+      "sha512": "17h8b5mXa87XYKrrVqdgZ38JefSUqLChUQpXgSnpzsM0nDOhE40FTeNWOJ/YmySGV6tG6T8+hjz6vxbknHJr6A==",
       "type": "package",
-      "path": "microsoft.csharp/4.7.0",
+      "path": "microsoft.csharp/4.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
         "lib/MonoTouch10/_._",
         "lib/net45/_._",
         "lib/netcore50/Microsoft.CSharp.dll",
-        "lib/netcoreapp2.0/_._",
         "lib/netstandard1.3/Microsoft.CSharp.dll",
-        "lib/netstandard2.0/Microsoft.CSharp.dll",
-        "lib/netstandard2.0/Microsoft.CSharp.xml",
         "lib/portable-net45+win8+wp8+wpa81/_._",
-        "lib/uap10.0.16299/_._",
         "lib/win8/_._",
         "lib/wp80/_._",
         "lib/wpa81/_._",
@@ -2339,7 +1986,7 @@
         "lib/xamarinmac20/_._",
         "lib/xamarintvos10/_._",
         "lib/xamarinwatchos10/_._",
-        "microsoft.csharp.4.7.0.nupkg.sha512",
+        "microsoft.csharp.4.0.1.nupkg.sha512",
         "microsoft.csharp.nuspec",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
@@ -2355,7 +2002,6 @@
         "ref/netcore50/ru/Microsoft.CSharp.xml",
         "ref/netcore50/zh-hans/Microsoft.CSharp.xml",
         "ref/netcore50/zh-hant/Microsoft.CSharp.xml",
-        "ref/netcoreapp2.0/_._",
         "ref/netstandard1.0/Microsoft.CSharp.dll",
         "ref/netstandard1.0/Microsoft.CSharp.xml",
         "ref/netstandard1.0/de/Microsoft.CSharp.xml",
@@ -2367,121 +2013,76 @@
         "ref/netstandard1.0/ru/Microsoft.CSharp.xml",
         "ref/netstandard1.0/zh-hans/Microsoft.CSharp.xml",
         "ref/netstandard1.0/zh-hant/Microsoft.CSharp.xml",
-        "ref/netstandard2.0/Microsoft.CSharp.dll",
-        "ref/netstandard2.0/Microsoft.CSharp.xml",
         "ref/portable-net45+win8+wp8+wpa81/_._",
-        "ref/uap10.0.16299/_._",
         "ref/win8/_._",
         "ref/wp80/_._",
         "ref/wpa81/_._",
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "useSharedDesignerContext.txt",
-        "version.txt"
+        "ref/xamarinwatchos10/_._"
       ]
     },
-    "Microsoft.EntityFrameworkCore/3.1.9": {
-      "sha512": "u3A2W0BvAuAF2jgW+WX+C+Sh8sMGX5Kl1hdA0gu6A/XSrZQoW/BUP4a/q2n3iitDGndaorqjAKx+Spb9gBto+w==",
+    "Microsoft.EntityFrameworkCore/3.1.10": {
+      "sha512": "0IhJl9mVJ4IhHobKvOo2iLB0xfxX2eYaSz4VZX+bMSm8IyZA1tOmyaOtg7oSzeUAe6eqpKVQLTgMFzk2AqCcaA==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore/3.1.9",
+      "path": "microsoft.entityframeworkcore/3.1.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.dll",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.xml",
-        "microsoft.entityframeworkcore.3.1.9.nupkg.sha512",
+        "microsoft.entityframeworkcore.3.1.10.nupkg.sha512",
         "microsoft.entityframeworkcore.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Abstractions/3.1.9": {
-      "sha512": "IR6Y4RJVlw0QXdWXjF3Kx9s1QLiicJus+BFBKr43lBtriV20j3yrWMoaZ9W1AUUgnicZXpXVcNfklqtmwb9Sxw==",
+    "Microsoft.EntityFrameworkCore.Abstractions/3.1.10": {
+      "sha512": "B1kUQ7o6+4Ly2neo86RJCpTYzTPpW1xzpHyRaTmGQS/p7umZOGoBJay+i/YDLmZkUPI4XULGnu5KJKipA0awUw==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.abstractions/3.1.9",
+      "path": "microsoft.entityframeworkcore.abstractions/3.1.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Abstractions.xml",
-        "microsoft.entityframeworkcore.abstractions.3.1.9.nupkg.sha512",
+        "microsoft.entityframeworkcore.abstractions.3.1.10.nupkg.sha512",
         "microsoft.entityframeworkcore.abstractions.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Analyzers/3.1.9": {
-      "sha512": "eXGyx/Lb1fiiKtnIStdxGrfBSSQg8oZytE10f1T/2xAx12W9dKB9U9fg05cwNCDC0S2CXILsmZHYaGqCSXVAqQ==",
+    "Microsoft.EntityFrameworkCore.Analyzers/3.1.10": {
+      "sha512": "reHrrF8i/Wao7l2PVXJ+JeZzEC4OkbcbfnQs8vtiT+SQ5P4MdQj3WzMkupjebaJWhIJZRc6qPT4BD9BUWQU4wQ==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.analyzers/3.1.9",
+      "path": "microsoft.entityframeworkcore.analyzers/3.1.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "analyzers/dotnet/cs/Microsoft.EntityFrameworkCore.Analyzers.dll",
         "lib/netstandard2.0/_._",
-        "microsoft.entityframeworkcore.analyzers.3.1.9.nupkg.sha512",
+        "microsoft.entityframeworkcore.analyzers.3.1.10.nupkg.sha512",
         "microsoft.entityframeworkcore.analyzers.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Design/3.1.9": {
-      "sha512": "2zgP7BWcw5nqGQiT4bEtiI6ras+4pvKg5D+tA3AYvjEifzzaWvmRTb3B9nRHpIYJAhPtmWNBVnVXLbu3fS1OYA==",
+    "Microsoft.EntityFrameworkCore.Relational/3.1.1": {
+      "sha512": "iBt59oeV97kqI6ZkdSpnUV1cC+hCGf5xqot331waiF5d5sxksLJZghkUZOLpe4yuPg3mnngXD6bPqMsLa4II5g==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.design/3.1.9",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "build/net461/Microsoft.EntityFrameworkCore.Design.props",
-        "build/netcoreapp2.0/Microsoft.EntityFrameworkCore.Design.props",
-        "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll",
-        "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.xml",
-        "microsoft.entityframeworkcore.design.3.1.9.nupkg.sha512",
-        "microsoft.entityframeworkcore.design.nuspec"
-      ]
-    },
-    "Microsoft.EntityFrameworkCore.Relational/3.1.9": {
-      "sha512": "7fhWuSfrCYlv/hvOX5OhbFJF/G9f8sifqTrJiYnAYLDOvNizwv7t9tFPD8JwaF3zM2S54O5/Vni2NxvwzSaW2w==",
-      "type": "package",
-      "path": "microsoft.entityframeworkcore.relational/3.1.9",
+      "path": "microsoft.entityframeworkcore.relational/3.1.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.xml",
-        "microsoft.entityframeworkcore.relational.3.1.9.nupkg.sha512",
+        "microsoft.entityframeworkcore.relational.3.1.1.nupkg.sha512",
         "microsoft.entityframeworkcore.relational.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Tools/3.1.9": {
-      "sha512": "mSgwjp0h5iqW5V49SVijR5O+kNpI1nitcbN12n9FYx/Ga6oCEFwXR/llBDesD6ASHw3Mx16vodJYJ7CEBx5rig==",
+    "Microsoft.Extensions.Caching.Abstractions/3.1.10": {
+      "sha512": "xdl25cxDgwVxF9ckD9vJ5AdjzRE1vTGLYj9kZf6aL317ZneUijkxd/nSuzN1gEuO74dwG/Yfr1zfs636D6YZsA==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.tools/3.1.9",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "lib/netstandard2.0/_._",
-        "microsoft.entityframeworkcore.tools.3.1.9.nupkg.sha512",
-        "microsoft.entityframeworkcore.tools.nuspec",
-        "tools/EntityFrameworkCore.PS2.psd1",
-        "tools/EntityFrameworkCore.PS2.psm1",
-        "tools/EntityFrameworkCore.psd1",
-        "tools/EntityFrameworkCore.psm1",
-        "tools/about_EntityFrameworkCore.help.txt",
-        "tools/init.ps1",
-        "tools/net461/any/ef.exe",
-        "tools/net461/win-x86/ef.exe",
-        "tools/netcoreapp2.0/any/ef.dll",
-        "tools/netcoreapp2.0/any/ef.runtimeconfig.json"
-      ]
-    },
-    "Microsoft.Extensions.Caching.Abstractions/3.1.9": {
-      "sha512": "/2QsPAsUZD4qvftZkUKHRRRryPDXWh606/iNXPLrulwHLMr9JNsKBJWVqylT3qU92nJok5VoqSblkY9mSyxFyg==",
-      "type": "package",
-      "path": "microsoft.extensions.caching.abstractions/3.1.9",
+      "path": "microsoft.extensions.caching.abstractions/3.1.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2490,14 +2091,14 @@
         "lib/netcoreapp3.1/Microsoft.Extensions.Caching.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Abstractions.xml",
-        "microsoft.extensions.caching.abstractions.3.1.9.nupkg.sha512",
+        "microsoft.extensions.caching.abstractions.3.1.10.nupkg.sha512",
         "microsoft.extensions.caching.abstractions.nuspec"
       ]
     },
-    "Microsoft.Extensions.Caching.Memory/3.1.9": {
-      "sha512": "/JrVMVetX/kpJQUIlJ6NLQ3zbF0yyryXpo4+uFCqYIUZzgmWk8DS/zSKcyj1tQ3410+vhDEAPngxC+hg0IlJeg==",
+    "Microsoft.Extensions.Caching.Memory/3.1.10": {
+      "sha512": "pR6mRkJx67/itEnEpnBiiATeH/P6RnhqvriD6RdQsXepO+uisfUrd149CTGPc1G5J0Qf9bwSCJkb/MYkuQ6mqw==",
       "type": "package",
-      "path": "microsoft.extensions.caching.memory/3.1.9",
+      "path": "microsoft.extensions.caching.memory/3.1.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2506,14 +2107,14 @@
         "lib/netcoreapp3.1/Microsoft.Extensions.Caching.Memory.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.xml",
-        "microsoft.extensions.caching.memory.3.1.9.nupkg.sha512",
+        "microsoft.extensions.caching.memory.3.1.10.nupkg.sha512",
         "microsoft.extensions.caching.memory.nuspec"
       ]
     },
-    "Microsoft.Extensions.Configuration/3.1.9": {
-      "sha512": "lqdkOGNeTMKG981Q7yWGlRiFbIlsRwTlMMiybT+WOzUCFBS/wc25tZgh7Wm/uRoBbWefgvokzmnea7ZjmFedmA==",
+    "Microsoft.Extensions.Configuration/3.1.10": {
+      "sha512": "HHBhCP3wAJe7UIXjim0wFXty0WG/rZAP3aZyy03uuaxiOOPHJjbUdY6K9qkfQuP+hsRzfiT+np5k4rFmcSo3og==",
       "type": "package",
-      "path": "microsoft.extensions.configuration/3.1.9",
+      "path": "microsoft.extensions.configuration/3.1.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2522,14 +2123,14 @@
         "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.xml",
-        "microsoft.extensions.configuration.3.1.9.nupkg.sha512",
+        "microsoft.extensions.configuration.3.1.10.nupkg.sha512",
         "microsoft.extensions.configuration.nuspec"
       ]
     },
-    "Microsoft.Extensions.Configuration.Abstractions/3.1.9": {
-      "sha512": "vOJxPKczaHpXeZFrxARxYwsEulhEouXc5aZGgMdkhV/iEXX9/pfjqKk76rTG+4CsJjHV+G/4eMhvOIaQMHENNA==",
+    "Microsoft.Extensions.Configuration.Abstractions/3.1.10": {
+      "sha512": "UEfngyXt8XYhmekUza9JsWlA37pNOtZAjcK5EEKQrHo2LDKJmZVmcyAUFlkzCcf97OSr+w/MiDLifDDNQk9agw==",
       "type": "package",
-      "path": "microsoft.extensions.configuration.abstractions/3.1.9",
+      "path": "microsoft.extensions.configuration.abstractions/3.1.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2538,14 +2139,14 @@
         "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.xml",
-        "microsoft.extensions.configuration.abstractions.3.1.9.nupkg.sha512",
+        "microsoft.extensions.configuration.abstractions.3.1.10.nupkg.sha512",
         "microsoft.extensions.configuration.abstractions.nuspec"
       ]
     },
-    "Microsoft.Extensions.Configuration.Binder/3.1.9": {
-      "sha512": "BG6HcT7tARYakftqfQu+cLksgIWG1NdxMY+igI12hdZrUK+WjS973NiRyuao/U9yyTeM9NPwRnC61hCmG3G3jg==",
+    "Microsoft.Extensions.Configuration.Binder/3.1.10": {
+      "sha512": "B9nQBk0GZVkOgSB1oB9V/7kvxhBvLCqm2x4m8MIoSxrd9yga8MVq2HWqnai8zZdH1WL6OlOG5mCVrwgAVwNNJg==",
       "type": "package",
-      "path": "microsoft.extensions.configuration.binder/3.1.9",
+      "path": "microsoft.extensions.configuration.binder/3.1.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2554,14 +2155,14 @@
         "lib/netcoreapp3.1/Microsoft.Extensions.Configuration.Binder.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Binder.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Binder.xml",
-        "microsoft.extensions.configuration.binder.3.1.9.nupkg.sha512",
+        "microsoft.extensions.configuration.binder.3.1.10.nupkg.sha512",
         "microsoft.extensions.configuration.binder.nuspec"
       ]
     },
-    "Microsoft.Extensions.DependencyInjection/3.1.9": {
-      "sha512": "ORqfrAACcvTInie1oGola5uky344/PiNfgayTPuZWV4WnSfIQZJQm/ZLpGshJE3h7TqwYaYElGazK/yaM2bFLA==",
+    "Microsoft.Extensions.DependencyInjection/3.1.10": {
+      "sha512": "fla8hKhQmld2s/7arhUxlu3dzZLBFJLg4BQiQZdqKND4MlmnMU9jhoxY4MMlSYl6MtxumtwASHMJnuV9f96IQQ==",
       "type": "package",
-      "path": "microsoft.extensions.dependencyinjection/3.1.9",
+      "path": "microsoft.extensions.dependencyinjection/3.1.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2574,28 +2175,28 @@
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.xml",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.dll",
         "lib/netstandard2.1/Microsoft.Extensions.DependencyInjection.xml",
-        "microsoft.extensions.dependencyinjection.3.1.9.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.3.1.10.nupkg.sha512",
         "microsoft.extensions.dependencyinjection.nuspec"
       ]
     },
-    "Microsoft.Extensions.DependencyInjection.Abstractions/3.1.9": {
-      "sha512": "8PkcaPwiTPOhqshoY4+rQUbz86X6YpLDLUqXOezh7L2A3pgpBmeBBByYIffofBlvQxDdQ0zB2DkWjbZWyCxRWg==",
+    "Microsoft.Extensions.DependencyInjection.Abstractions/3.1.10": {
+      "sha512": "bhjtAN7Ix5WOAr47RK16Lr1l2eizSBMCYQSavkooZyf6Xdf8XWAYGWsGsPqUFOeeRxzhpRho051rXaLn5wskVw==",
       "type": "package",
-      "path": "microsoft.extensions.dependencyinjection.abstractions/3.1.9",
+      "path": "microsoft.extensions.dependencyinjection.abstractions/3.1.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.xml",
-        "microsoft.extensions.dependencyinjection.abstractions.3.1.9.nupkg.sha512",
+        "microsoft.extensions.dependencyinjection.abstractions.3.1.10.nupkg.sha512",
         "microsoft.extensions.dependencyinjection.abstractions.nuspec"
       ]
     },
-    "Microsoft.Extensions.Logging/3.1.9": {
-      "sha512": "+V3i0jCQCO6IIOf6e+fL0SqrZd2x/Krug9EEL1JHa9R03RsbEpltCtjVY5hxedyuyuQKwvLoR12sCfu/9XEUAw==",
+    "Microsoft.Extensions.Logging/3.1.10": {
+      "sha512": "GjP+4cUFdsNk/Px6BlJ7p7x7ibpawcaAV4tfrRJTv2s6Nb7yz5OEKA0kbNl1ZXKa6uMQzbNqc5+B/tJsqzgIXg==",
       "type": "package",
-      "path": "microsoft.extensions.logging/3.1.9",
+      "path": "microsoft.extensions.logging/3.1.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2604,28 +2205,28 @@
         "lib/netcoreapp3.1/Microsoft.Extensions.Logging.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.xml",
-        "microsoft.extensions.logging.3.1.9.nupkg.sha512",
+        "microsoft.extensions.logging.3.1.10.nupkg.sha512",
         "microsoft.extensions.logging.nuspec"
       ]
     },
-    "Microsoft.Extensions.Logging.Abstractions/3.1.9": {
-      "sha512": "W5fbF8qVR9SMVVJqDQLIR7meWbev6Pu/lbrm7LDNr4Sp7HOotr4k2UULTdFSXOi5aoDdkQZpWnq0ZSpjrR3tjg==",
+    "Microsoft.Extensions.Logging.Abstractions/3.1.10": {
+      "sha512": "bKHbgzbGsPZbEaExRaJqBz3WQ1GfhMttM23e1nivLJ8HbA3Ad526mW2G2K350q3Dc3HG83I5W8uSZWG4Rv4IpA==",
       "type": "package",
-      "path": "microsoft.extensions.logging.abstractions/3.1.9",
+      "path": "microsoft.extensions.logging.abstractions/3.1.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.xml",
-        "microsoft.extensions.logging.abstractions.3.1.9.nupkg.sha512",
+        "microsoft.extensions.logging.abstractions.3.1.10.nupkg.sha512",
         "microsoft.extensions.logging.abstractions.nuspec"
       ]
     },
-    "Microsoft.Extensions.Options/3.1.9": {
-      "sha512": "EIb3G1DL+Rl9MvJR7LjI1wCy2nfTN4y8MflbOftn1HLYQBj/Rwl8kUbGTrSFE01c99Wm4ETjWVsjqKcpFvhPng==",
+    "Microsoft.Extensions.Options/3.1.10": {
+      "sha512": "CusdV4eIv+CGb9Fy6a+JcRqpcVJREmvFI8eHk3nQ76VLtEAIJpKQY5r5sRSs5w6NevNi2ukdnKleH0YCPudFZQ==",
       "type": "package",
-      "path": "microsoft.extensions.options/3.1.9",
+      "path": "microsoft.extensions.options/3.1.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2634,14 +2235,14 @@
         "lib/netcoreapp3.1/Microsoft.Extensions.Options.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Options.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Options.xml",
-        "microsoft.extensions.options.3.1.9.nupkg.sha512",
+        "microsoft.extensions.options.3.1.10.nupkg.sha512",
         "microsoft.extensions.options.nuspec"
       ]
     },
-    "Microsoft.Extensions.Primitives/3.1.9": {
-      "sha512": "IrHecH0eGG7/XoeEtv++oLg/sJHRNyeCqlA9RhAo6ig4GpOTjtDr32sBMYuuLtUq8ALahneWkrOzoBAwJ4L4iA==",
+    "Microsoft.Extensions.Primitives/3.1.10": {
+      "sha512": "YDuQS3BeaVY6PCWUm5f6qFTYsxhwntQrcfwUzbohU/0rZBL5XI+UsD5SgggHKHX+rFY4laaT428q608Sw/mDsw==",
       "type": "package",
-      "path": "microsoft.extensions.primitives/3.1.9",
+      "path": "microsoft.extensions.primitives/3.1.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2650,7 +2251,7 @@
         "lib/netcoreapp3.1/Microsoft.Extensions.Primitives.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
-        "microsoft.extensions.primitives.3.1.9.nupkg.sha512",
+        "microsoft.extensions.primitives.3.1.10.nupkg.sha512",
         "microsoft.extensions.primitives.nuspec"
       ]
     },
@@ -3639,6 +3240,77 @@
         "system.drawing.common.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "System.Dynamic.Runtime/4.0.11": {
+      "sha512": "db34f6LHYM0U0JpE+sOmjar27BnqTVkbLJhgfwMpTdgTigG/Hna3m2MYVwnFzGGKnEJk2UXFuoVTr8WUbU91/A==",
+      "type": "package",
+      "path": "system.dynamic.runtime/4.0.11",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/netcore50/System.Dynamic.Runtime.dll",
+        "lib/netstandard1.3/System.Dynamic.Runtime.dll",
+        "lib/portable-net45+win8+wp8+wpa81/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/System.Dynamic.Runtime.dll",
+        "ref/netcore50/System.Dynamic.Runtime.xml",
+        "ref/netcore50/de/System.Dynamic.Runtime.xml",
+        "ref/netcore50/es/System.Dynamic.Runtime.xml",
+        "ref/netcore50/fr/System.Dynamic.Runtime.xml",
+        "ref/netcore50/it/System.Dynamic.Runtime.xml",
+        "ref/netcore50/ja/System.Dynamic.Runtime.xml",
+        "ref/netcore50/ko/System.Dynamic.Runtime.xml",
+        "ref/netcore50/ru/System.Dynamic.Runtime.xml",
+        "ref/netcore50/zh-hans/System.Dynamic.Runtime.xml",
+        "ref/netcore50/zh-hant/System.Dynamic.Runtime.xml",
+        "ref/netstandard1.0/System.Dynamic.Runtime.dll",
+        "ref/netstandard1.0/System.Dynamic.Runtime.xml",
+        "ref/netstandard1.0/de/System.Dynamic.Runtime.xml",
+        "ref/netstandard1.0/es/System.Dynamic.Runtime.xml",
+        "ref/netstandard1.0/fr/System.Dynamic.Runtime.xml",
+        "ref/netstandard1.0/it/System.Dynamic.Runtime.xml",
+        "ref/netstandard1.0/ja/System.Dynamic.Runtime.xml",
+        "ref/netstandard1.0/ko/System.Dynamic.Runtime.xml",
+        "ref/netstandard1.0/ru/System.Dynamic.Runtime.xml",
+        "ref/netstandard1.0/zh-hans/System.Dynamic.Runtime.xml",
+        "ref/netstandard1.0/zh-hant/System.Dynamic.Runtime.xml",
+        "ref/netstandard1.3/System.Dynamic.Runtime.dll",
+        "ref/netstandard1.3/System.Dynamic.Runtime.xml",
+        "ref/netstandard1.3/de/System.Dynamic.Runtime.xml",
+        "ref/netstandard1.3/es/System.Dynamic.Runtime.xml",
+        "ref/netstandard1.3/fr/System.Dynamic.Runtime.xml",
+        "ref/netstandard1.3/it/System.Dynamic.Runtime.xml",
+        "ref/netstandard1.3/ja/System.Dynamic.Runtime.xml",
+        "ref/netstandard1.3/ko/System.Dynamic.Runtime.xml",
+        "ref/netstandard1.3/ru/System.Dynamic.Runtime.xml",
+        "ref/netstandard1.3/zh-hans/System.Dynamic.Runtime.xml",
+        "ref/netstandard1.3/zh-hant/System.Dynamic.Runtime.xml",
+        "ref/portable-net45+win8+wp8+wpa81/_._",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/aot/lib/netcore50/System.Dynamic.Runtime.dll",
+        "system.dynamic.runtime.4.0.11.nupkg.sha512",
+        "system.dynamic.runtime.nuspec"
       ]
     },
     "System.Globalization/4.0.11": {
@@ -6580,14 +6252,22 @@
         "system.xml.xpath.xmldocument.4.0.1.nupkg.sha512",
         "system.xml.xpath.xmldocument.nuspec"
       ]
+    },
+    "HouseholdBook.Domain/1.0.0": {
+      "type": "project",
+      "path": "../HouseholdBook.Domain/HouseholdBook.Domain.csproj",
+      "msbuildProject": "../HouseholdBook.Domain/HouseholdBook.Domain.csproj"
+    },
+    "HouseholdBook.EntityFramework/1.0.0": {
+      "type": "project",
+      "path": "../HouseholdBook.EntityFramework/HouseholdBook.EntityFramework.csproj",
+      "msbuildProject": "../HouseholdBook.EntityFramework/HouseholdBook.EntityFramework.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Dragablz >= 0.0.3.223",
-      "MaterialDesignThemes >= 3.2.0",
-      "Microsoft.EntityFrameworkCore.Tools >= 3.1.9",
-      "MySql.Data.EntityFrameworkCore >= 8.0.22"
+      "HouseholdBook.Domain >= 1.0.0",
+      "HouseholdBook.EntityFramework >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -6596,9 +6276,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Programmieren\\.NET\\WPF\\HouseholdBook\\HouseholdBook\\HouseholdBook.csproj",
-      "projectName": "HouseholdBook",
-      "projectPath": "E:\\Programmieren\\.NET\\WPF\\HouseholdBook\\HouseholdBook\\HouseholdBook.csproj",
+      "projectUniqueName": "E:\\Programmieren\\.NET\\WPF\\HouseholdBook\\HouseholdBook\\HouseholdBook.WPF.csproj",
+      "projectName": "HouseholdBook.WPF",
+      "projectPath": "E:\\Programmieren\\.NET\\WPF\\HouseholdBook\\HouseholdBook\\HouseholdBook.WPF.csproj",
       "packagesPath": "C:\\Users\\boehm\\.nuget\\packages\\",
       "outputPath": "E:\\Programmieren\\.NET\\WPF\\HouseholdBook\\HouseholdBook\\obj\\",
       "projectStyle": "PackageReference",
@@ -6615,7 +6295,15 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "targetAlias": "netcoreapp3.1",
+          "projectReferences": {
+            "E:\\Programmieren\\.NET\\WPF\\HouseholdBook\\HouseholdBook.Domain\\HouseholdBook.Domain.csproj": {
+              "projectPath": "E:\\Programmieren\\.NET\\WPF\\HouseholdBook\\HouseholdBook.Domain\\HouseholdBook.Domain.csproj"
+            },
+            "E:\\Programmieren\\.NET\\WPF\\HouseholdBook\\HouseholdBook.EntityFramework\\HouseholdBook.EntityFramework.csproj": {
+              "projectPath": "E:\\Programmieren\\.NET\\WPF\\HouseholdBook\\HouseholdBook.EntityFramework\\HouseholdBook.EntityFramework.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -6626,26 +6314,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "dependencies": {
-          "Dragablz": {
-            "target": "Package",
-            "version": "[0.0.3.223, )"
-          },
-          "MaterialDesignThemes": {
-            "target": "Package",
-            "version": "[3.2.0, )"
-          },
-          "Microsoft.EntityFrameworkCore.Tools": {
-            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-            "suppressParent": "All",
-            "target": "Package",
-            "version": "[3.1.9, )"
-          },
-          "MySql.Data.EntityFrameworkCore": {
-            "target": "Package",
-            "version": "[8.0.22, )"
-          }
-        },
+        "targetAlias": "netcoreapp3.1",
         "imports": [
           "net461",
           "net462",
@@ -6664,7 +6333,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

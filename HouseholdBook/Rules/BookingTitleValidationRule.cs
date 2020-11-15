@@ -1,9 +1,7 @@
-﻿using System;
-using System.Globalization;
-using System.Windows;
+﻿using System.Globalization;
 using System.Windows.Controls;
 
-namespace HouseholdBook.Rules
+namespace HouseholdBook.WPF.Rules
 {
     class BookingTitleValidationRule : ValidationRule
     {
@@ -11,7 +9,7 @@ namespace HouseholdBook.Rules
 
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            string title = (string) value;
+            string title = (string)value;
 
             if (title.Length < Length)
             {

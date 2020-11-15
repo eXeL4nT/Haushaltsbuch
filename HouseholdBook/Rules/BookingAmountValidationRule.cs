@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
+﻿using System.Globalization;
 using System.Windows.Controls;
 
-namespace HouseholdBook.Rules
+namespace HouseholdBook.WPF.Rules
 {
     class BookingAmountValidationRule : ValidationRule
     {
@@ -13,7 +10,7 @@ namespace HouseholdBook.Rules
 
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            string amount = (string) value;
+            string amount = (string)value;
 
             if (!double.TryParse(amount, out double userInput))
             {
