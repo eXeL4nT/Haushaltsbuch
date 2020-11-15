@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HouseholdBook.WPF", "HouseholdBook\HouseholdBook.WPF.csproj", "{5ABBA8FB-E701-464E-9109-1532A932C481}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HouseholdBook.WPF", "HouseholdBook.WPF\HouseholdBook.WPF.csproj", "{5ABBA8FB-E701-464E-9109-1532A932C481}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HouseholdBook.EntityFramework", "HouseholdBook.EntityFramework\HouseholdBook.EntityFramework.csproj", "{587E5DC0-DAE2-4E74-A3B7-65E8DB619F61}"
 EndProject
