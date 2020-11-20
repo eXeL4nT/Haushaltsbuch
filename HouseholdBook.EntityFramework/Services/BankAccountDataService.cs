@@ -1,5 +1,5 @@
-﻿using HouseholdBook.Domain.Models;
-using HouseholdBook.Domain.Services;
+﻿using HouseholdBook.EntityFramework.Models;
+using HouseholdBook.EntityFramework.Services;
 using HouseholdBook.EntityFramework.Services.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -33,32 +33,29 @@ namespace HouseholdBook.EntityFramework.Services
 
         public async Task<BankAccount> Get(int id)
         {
-            using (HouseholdDbContext context = contextFactory.CreateDbContext())
-            {
-                BankAccount entity = await context.BankAccounts.FirstOrDefaultAsync(b => b.Id == id);
+            using HouseholdDbContext context = contextFactory.CreateDbContext();
 
-                return entity;
-            }
+            BankAccount entity = await context.BankAccounts.FirstOrDefaultAsync(b => b.Id == id);
+
+            return entity;
         }
 
         public async Task<BankAccount> Get(string name)
         {
-            using (HouseholdDbContext context = contextFactory.CreateDbContext())
-            {
-                BankAccount entity = await context.BankAccounts.FirstOrDefaultAsync(b => b.Name == name);
+            using HouseholdDbContext context = contextFactory.CreateDbContext();
 
-                return entity;
-            }
+            BankAccount entity = await context.BankAccounts.FirstOrDefaultAsync(b => b.Name == name);
+
+            return entity;
         }
 
         public async Task<IEnumerable<BankAccount>> GetAll()
         {
-            using (HouseholdDbContext context = contextFactory.CreateDbContext())
-            {
-                IEnumerable<BankAccount> entities = await context.BankAccounts.ToListAsync();
+            using HouseholdDbContext context = contextFactory.CreateDbContext();
 
-                return entities;
-            }
+            IEnumerable<BankAccount> entities = await context.BankAccounts.ToListAsync();
+
+            return entities;
         }
 
         public async Task<BankAccount> Update(int id, BankAccount entity)

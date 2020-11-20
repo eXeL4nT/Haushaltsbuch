@@ -3,24 +3,16 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:HouseholdBook.WPF.Views"
+      xmlns:local="clr-namespace:HouseholdBook.WPF"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800">
 
-    <Grid Background="{StaticResource BrushPrimary2}" DockPanel.Dock="Top">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Button Grid.Row="0" Name="BtnRefresh" Click="BtnRefresh_Click" Style="{StaticResource OverviewRefreshButton}">
-            <StackPanel>
-                <Image Source="/Resources/Img/refresh.png" Width="25"/>
-            </StackPanel>
-        </Button>
-        <TabControl Grid.Row="1" Margin="5" Background="Transparent" BorderThickness="1" BorderBrush="Transparent">
+    <Grid DockPanel.Dock="Top">
+        <TabControl Margin="5" Background="{StaticResource BrushPrimary2}" BorderThickness="0">
             <TabItem Header="ÜBERSICHT" Style="{StaticResource tiStyle}" IsSelected="True">
                 <Grid>
-                    <DataGrid x:Name="DgBookings" Style="{StaticResource dgStyle}" MouseDoubleClick="DgBookings_MouseDoubleClick">
+                    <DataGrid x:Name="dgBookings" Style="{StaticResource dgStyle}" ItemsSource="{Binding Bookings}">
+                        <!--
                         <DataGrid.GroupStyle>
                             <GroupStyle ContainerStyle="{StaticResource giStyle}">
                                 <GroupStyle.Panel>
@@ -30,19 +22,20 @@
                                 </GroupStyle.Panel>
                             </GroupStyle>
                         </DataGrid.GroupStyle>
+                        -->
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Binding="{Binding Path=BookingId}" Visibility="Hidden"/>
-                            <DataGridTextColumn Header="Datum" Binding="{Binding Path=Date}" Width="*"/>
-                            <DataGridTextColumn Header="Titel" Binding="{Binding Path=Title}" Width="*"/>
-                            <DataGridTextColumn Header="Betrag" Binding="{Binding Path=Amount}" Width="*"/>
-                            <DataGridTextColumn Header="Kategorie" Binding="{Binding Path=Category.Title}" Width="*"/>
-                            <DataGridTextColumn Header="Konto" Binding="{Binding Path=BankAccount.Name}" Width="*"/>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Visibility="Collapsed"/>
+                            <DataGridTextColumn Header="Datum" Binding="{Binding Date}" Width="*"/>
+                            <DataGridTextColumn Header="Titel" Binding="{Binding Title}" Width="*"/>
+                            <DataGridTextColumn Header="Betrag" Binding="{Binding Amount}" Width="*"/>
+                            <DataGridTextColumn Header="Kategorie" Binding="{Binding Category.Name}" Width="*"/>
+                            <DataGridTextColumn Header="Konto" Binding="{Binding BankAccount.Name}" Width="*"/>
                             <DataGridTemplateColumn>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button x:Name="BtnDelete" Width="20" Height="20" Click="BtnDelete_Click">
+                                        <Button x:Name="BtnDelete" Width="20" Height="20">
                                             <Button.Background>
-                                                <ImageBrush ImageSource="/Resources/Img/trash.png"></ImageBrush>
+                                                <ImageBrush ImageSource="/Resources/Img/trash.png"/>
                                             </Button.Background>
                                         </Button>
                                     </DataTemplate>

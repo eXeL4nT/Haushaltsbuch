@@ -1,4 +1,4 @@
-﻿using HouseholdBook.Domain.Models;
+﻿using HouseholdBook.EntityFramework.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace HouseholdBook.EntityFramework

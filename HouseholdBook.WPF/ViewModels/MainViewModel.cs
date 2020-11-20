@@ -1,5 +1,5 @@
 ﻿using HouseholdBook.WPF.Commands;
-using HouseholdBook.WPF.State.Navigators;
+using HouseholdBook.WPF.ViewModels.Factories;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,8 +7,25 @@ using System.Windows.Input;
 
 namespace HouseholdBook.WPF.ViewModels
 {
-    class MainViewModel : ViewModelBase
+    public class MainViewModel : ViewModelBase
     {
-        public INavigator Navigator { get; set; } = new Navigator();
+        private ViewModelBase currentViewModel;
+        public ViewModelBase CurrentViewModel
+        {
+            get => currentViewModel;
+            set
+            {
+                currentViewModel = value;
+                OnPropertyChanged(nameof(currentViewModel));
+            }
+        }
+
+        public ICommand UpdateViewCommand { get; set; }
+
+        public MainViewModel(IHouseholdViewModelFactory viewModelFactory)
+        {
+            UpdateViewCommand = new UpdateViewCommand(this, viewModelFactory);
+            UpdateViewCommand.Execute(ViewType.Overview);
+        }
     }
 }

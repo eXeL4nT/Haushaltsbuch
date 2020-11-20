@@ -11,18 +11,15 @@
                 <ResourceDictionary Source="/Styles/Common.xaml"/>
                 <ResourceDictionary Source="/Styles/ToolBar.xaml"/>
                 <ResourceDictionary Source="/Styles/Overview.xaml"/>
+                <ResourceDictionary Source="/Styles/AddBooking.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewmodels:OverviewViewModel}">
                 <views:OverviewView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type viewmodels:AddIncomeViewModel}">
-                <views:AddIncomeView/>
-            </DataTemplate>
-
-            <DataTemplate DataType="{x:Type viewmodels:AddOutgoingViewModel}">
-                <views:AddOutgoingView/>
+            <DataTemplate DataType="{x:Type viewmodels:AddBookingViewModel}">
+                <views:AddBookingView/>
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewmodels:EditBookingViewModel}">

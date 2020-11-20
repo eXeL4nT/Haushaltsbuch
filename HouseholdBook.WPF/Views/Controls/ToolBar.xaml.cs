@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HouseholdBook.WPF.Controls
+namespace HouseholdBook.WPF.Views.Controls
 {
     /// <summary>
     /// Interaktionslogik für ToolBar.xaml

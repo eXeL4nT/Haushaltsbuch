@@ -1,10 +1,12 @@
-﻿using System;
+﻿using HouseholdBook.EntityFramework.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace HouseholdBook.WPF.ViewModels
 {
-    class EditBookingViewModel : ViewModelBase
+    public class EditBookingViewModel : ViewModelBase
     {
+
     }
 }

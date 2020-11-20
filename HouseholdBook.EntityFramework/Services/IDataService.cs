@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HouseholdBook.Domain.Services
+namespace HouseholdBook.EntityFramework.Services
 {
     public interface IDataService<T>
     {

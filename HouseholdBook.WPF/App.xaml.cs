@@ -1,8 +1,10 @@
-﻿using HouseholdBook.Domain.Models;
-using HouseholdBook.Domain.Services;
-using HouseholdBook.Domain.Services.BookingServices;
+﻿using HouseholdBook.EntityFramework;
+using HouseholdBook.EntityFramework.Models;
 using HouseholdBook.EntityFramework.Services;
 using HouseholdBook.WPF.ViewModels;
+using HouseholdBook.WPF.ViewModels.Factories;
+using HouseholdBook.WPF.Views;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows;
 
@@ -13,24 +15,33 @@ namespace HouseholdBook.WPF
     /// </summary>
     public partial class App : Application
     {
-        protected override async void OnStartup(StartupEventArgs e)
+        protected override void OnStartup(StartupEventArgs e)
         {
-            IDataService<Booking> bookingService = new BookingDataService(new EntityFramework.HouseholdDbContextFactory());
-            IDataService<Category> categoryService = new CategoryDataService(new EntityFramework.HouseholdDbContextFactory());
-            IDataService<BankAccount> bankAccountService = new BankAccountDataService(new EntityFramework.HouseholdDbContextFactory());
-            IAddIncomeService addIncomeService = new AddIncomeService(bookingService);
+            IServiceProvider serviceProvider = CreateServiceProvider();
 
-            Category category = categoryService.Get("Lebensmittel").Result;
-            BankAccount bankAccount = bankAccountService.Get("Girokonto").Result;
-            Booking test = new Booking { Title = "aa", Amount = 5, Date = "15.11.2020", Category = category, BankAccount = bankAccount };
-
-            await addIncomeService.AddIncome(test);
-
-            Window window = new MainWindow();
-            window.DataContext = new MainViewModel();
+            Window window = serviceProvider.GetRequiredService<MainWindow>();
             window.Show();
 
             base.OnStartup(e);
+        }
+
+        private IServiceProvider CreateServiceProvider()
+        {
+            IServiceCollection services = new ServiceCollection();
+
+            services.AddSingleton<HouseholdDbContextFactory>();
+            services.AddSingleton<IDataService<Booking>, BookingDataService>();
+
+            services.AddSingleton<IHouseholdViewModelFactory, HouseholdViewModelFactory>();
+            services.AddSingleton<OverviewViewModel>();
+            services.AddSingleton<AddBookingViewModel>();
+            services.AddSingleton<EditBookingViewModel>();
+
+            services.AddScoped<MainViewModel>();
+
+            services.AddScoped(s => new MainWindow(s.GetRequiredService<MainViewModel>()));
+            
+            return services.BuildServiceProvider();
         }
     }
 }

@@ -2,13 +2,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:controls="clr-namespace:HouseholdBook.WPF.Controls"
-        x:Class="HouseholdBook.WPF.MainWindow"
+        xmlns:controls="clr-namespace:HouseholdBook.WPF.Views.Controls"
+        x:Class="HouseholdBook.WPF.Views.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="650" Width="700" MinWidth="615" MinHeight="500">
 
-    <DockPanel LastChildFill="True">
-        <controls:ToolBar DockPanel.Dock="Top" DataContext="{Binding Navigator}"/>
-        <ContentControl DockPanel.Dock="Top" Content="{Binding Navigator.CurrentViewModel}"/>
+    <DockPanel LastChildFill="True" Background="{StaticResource BrushPrimary2}">
+        <controls:ToolBar DockPanel.Dock="Top"/>
+        <ContentControl DockPanel.Dock="Top" Content="{Binding CurrentViewModel}"/>
     </DockPanel>
 </Window>

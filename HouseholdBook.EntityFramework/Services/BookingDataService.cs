@@ -1,5 +1,5 @@
-﻿using HouseholdBook.Domain.Models;
-using HouseholdBook.Domain.Services;
+﻿using HouseholdBook.EntityFramework.Models;
+using HouseholdBook.EntityFramework.Services;
 using HouseholdBook.EntityFramework.Services.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -33,32 +33,29 @@ namespace HouseholdBook.EntityFramework.Services
 
         public async Task<Booking> Get(int id)
         {
-            using (HouseholdDbContext context = contextFactory.CreateDbContext())
-            {
-                Booking entity = await context.Bookings.Include(c => c.Category).Include(b => b.BankAccount).FirstOrDefaultAsync(e => e.Id == id);
+            using HouseholdDbContext context = contextFactory.CreateDbContext();
 
-                return entity;
-            }
+            Booking entity = await context.Bookings.Include(c => c.Category).Include(b => b.BankAccount).FirstOrDefaultAsync(e => e.Id == id);
+
+            return entity;
         }
 
         public async Task<Booking> Get(string name)
         {
-            using (HouseholdDbContext context = contextFactory.CreateDbContext())
-            {
-                Booking entity = await context.Bookings.FirstOrDefaultAsync(b => b.Title == name);
+            using HouseholdDbContext context = contextFactory.CreateDbContext();
 
-                return entity;
-            }
+            Booking entity = await context.Bookings.Include(c => c.Category).Include(b => b.BankAccount).FirstOrDefaultAsync(b => b.Title == name);
+
+            return entity;
         }
 
         public async Task<IEnumerable<Booking>> GetAll()
         {
-            using (HouseholdDbContext context = contextFactory.CreateDbContext())
-            {
-                IEnumerable<Booking> entities = await context.Bookings.Include(c => c.Category).Include(b => b.BankAccount).ToListAsync();
+            using HouseholdDbContext context = contextFactory.CreateDbContext();
 
-                return entities;
-            }
+            IEnumerable<Booking> entities = await context.Bookings.Include(c => c.Category).Include(b => b.BankAccount).ToListAsync();
+
+            return entities;
         }
 
         public async Task<Booking> Update(int id, Booking entity)

@@ -13,8 +13,4 @@
     <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.22" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\HouseholdBook.Domain\HouseholdBook.Domain.csproj" />
-  </ItemGroup>
-
 </Project>

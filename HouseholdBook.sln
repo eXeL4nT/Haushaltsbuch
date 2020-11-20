@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HouseholdBook.WPF", "Househ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HouseholdBook.EntityFramework", "HouseholdBook.EntityFramework\HouseholdBook.EntityFramework.csproj", "{587E5DC0-DAE2-4E74-A3B7-65E8DB619F61}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HouseholdBook.Domain", "HouseholdBook.Domain\HouseholdBook.Domain.csproj", "{3EF54C31-0EDC-4B2E-A2A9-EA89CC7B54AB}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{587E5DC0-DAE2-4E74-A3B7-65E8DB619F61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{587E5DC0-DAE2-4E74-A3B7-65E8DB619F61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{587E5DC0-DAE2-4E74-A3B7-65E8DB619F61}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3EF54C31-0EDC-4B2E-A2A9-EA89CC7B54AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3EF54C31-0EDC-4B2E-A2A9-EA89CC7B54AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3EF54C31-0EDC-4B2E-A2A9-EA89CC7B54AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3EF54C31-0EDC-4B2E-A2A9-EA89CC7B54AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

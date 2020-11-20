@@ -1,5 +1,5 @@
-﻿using HouseholdBook.Domain.Models;
-using HouseholdBook.Domain.Services;
+﻿using HouseholdBook.EntityFramework.Models;
+using HouseholdBook.EntityFramework.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
@@ -20,38 +20,35 @@ namespace HouseholdBook.EntityFramework.Services.Common
 
         public async Task<T> Create(T entity)
         {
-            using (HouseholdDbContext context = contextFactory.CreateDbContext())
-            {
-                EntityEntry<T> createdResult = await context.Set<T>().AddAsync(entity);
-                await context.SaveChangesAsync();
+            using HouseholdDbContext context = contextFactory.CreateDbContext();
 
-                return createdResult.Entity;
-            }
+            EntityEntry<T> createdResult = await context.Set<T>().AddAsync(entity);
+            await context.SaveChangesAsync();
+
+            return createdResult.Entity;
         }
 
         public async Task<bool> Delete(int id)
         {
-            using (HouseholdDbContext context = contextFactory.CreateDbContext())
-            {
-                T entity = await context.Set<T>().FirstOrDefaultAsync(e => e.Id == id);
-                context.Set<T>().Remove(entity);
-                await context.SaveChangesAsync();
+            using HouseholdDbContext context = contextFactory.CreateDbContext();
 
-                return true;
-            }
+            T entity = await context.Set<T>().FirstOrDefaultAsync(e => e.Id == id);
+            context.Set<T>().Remove(entity);
+            await context.SaveChangesAsync();
+
+            return true;
         }
 
         public async Task<T> Update(int id, T entity)
         {
-            using (HouseholdDbContext context = contextFactory.CreateDbContext())
-            {
-                entity.Id = id;
+            using HouseholdDbContext context = contextFactory.CreateDbContext();
 
-                context.Set<T>().Update(entity);
-                await context.SaveChangesAsync();
+            entity.Id = id;
 
-                return entity;
-            }
+            context.Set<T>().Update(entity);
+            await context.SaveChangesAsync();
+
+            return entity;
         }
     }
 }

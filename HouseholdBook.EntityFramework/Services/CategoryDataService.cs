@@ -1,5 +1,5 @@
-﻿using HouseholdBook.Domain.Models;
-using HouseholdBook.Domain.Services;
+﻿using HouseholdBook.EntityFramework.Models;
+using HouseholdBook.EntityFramework.Services;
 using HouseholdBook.EntityFramework.Services.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -33,32 +33,29 @@ namespace HouseholdBook.EntityFramework.Services
 
         public async Task<Category> Get(int id)
         {
-            using (HouseholdDbContext context = contextFactory.CreateDbContext())
-            {
-                Category entity = await context.Categories.FirstOrDefaultAsync(c => c.Id == id);
+            using HouseholdDbContext context = contextFactory.CreateDbContext();
 
-                return entity;
-            }
+            Category entity = await context.Categories.FirstOrDefaultAsync(c => c.Id == id);
+
+            return entity;
         }
 
         public async Task<Category> Get(string name)
         {
-            using (HouseholdDbContext context = contextFactory.CreateDbContext())
-            {
-                Category entity = await context.Categories.FirstOrDefaultAsync(c => c.Name == name);
+            using HouseholdDbContext context = contextFactory.CreateDbContext();
 
-                return entity;
-            }
+            Category entity = await context.Categories.FirstOrDefaultAsync(c => c.Name == name);
+
+            return entity;
         }
 
         public async Task<IEnumerable<Category>> GetAll()
         {
-            using (HouseholdDbContext context = contextFactory.CreateDbContext())
-            {
-                IEnumerable<Category> entities = await context.Categories.ToListAsync();
+            using HouseholdDbContext context = contextFactory.CreateDbContext();
 
-                return entities;
-            }
+            IEnumerable<Category> entities = await context.Categories.ToListAsync();
+
+            return entities;
         }
 
         public async Task<Category> Update(int id, Category entity)
