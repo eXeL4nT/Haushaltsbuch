@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.10" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\HouseholdBook.EntityFramework\HouseholdBook.EntityFramework.csproj" />
   </ItemGroup>
 
@@ -16,6 +20,12 @@
     <Resource Include="Resources\img\refresh.png" />
     <Resource Include="Resources\img\edit.png" />
 	<Resource Include="Resources\img\trash.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

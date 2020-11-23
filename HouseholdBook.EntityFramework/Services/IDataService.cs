@@ -11,7 +11,7 @@ namespace HouseholdBook.EntityFramework.Services
 
         Task<T> Get(int id);
 
-        Task<T> Get(string name);
+        Task<T> Get(string description);
 
         Task<T> Create(T entity);
 

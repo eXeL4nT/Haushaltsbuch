@@ -6,6 +6,6 @@ namespace HouseholdBook.EntityFramework.Models
     {
         public string Name { get; private set; }
 
-        public List<Booking> Bookings { get; set; }
+        public ICollection<Booking> Bookings { get; set; }
     }
 }

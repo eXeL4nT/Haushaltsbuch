@@ -9,7 +9,9 @@ namespace HouseholdBook.EntityFramework.Models
         public double Amount { get; set; }
         public string Date { get; set; }
 
+        public int CategoryId { get; set; }
         public Category Category { get; set; }
+        public int BankAccountId { get; set; }
         public BankAccount BankAccount { get; set; }
     }
 }

@@ -6,12 +6,20 @@ using System.Text;
 
 namespace HouseholdBook.EntityFramework
 {
-    public class HouseholdDbContextFactory : IDesignTimeDbContextFactory<HouseholdDbContext>
+    public class HouseholdDbContextFactory
     {
-        public HouseholdDbContext CreateDbContext(string[] args = null)
+        private readonly Action<DbContextOptionsBuilder> configureDbContext;
+
+        public HouseholdDbContextFactory(Action<DbContextOptionsBuilder> configureDbContext)
         {
-            var options = new DbContextOptionsBuilder<HouseholdDbContext>();
-            options.UseMySQL("Server = fboehme; Database = household_database; Uid = user; Pwd = password;");
+            this.configureDbContext = configureDbContext;
+        }
+
+        public HouseholdDbContext CreateDbContext()
+        {
+            DbContextOptionsBuilder<HouseholdDbContext> options = new DbContextOptionsBuilder<HouseholdDbContext>();
+
+            configureDbContext(options);
 
             return new HouseholdDbContext(options.Options);
         }

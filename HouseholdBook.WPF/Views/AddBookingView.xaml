@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:local="clr-namespace:HouseholdBook.WPF"
       xmlns:models="clr-namespace:HouseholdBook.EntityFramework.Models;assembly=HouseholdBook.EntityFramework"
       xmlns:rules="clr-namespace:HouseholdBook.WPF.Rules"
@@ -17,6 +18,8 @@
                 </Grid>
             </Border>
         </ControlTemplate>
+
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     </UserControl.Resources>
 
     <StackPanel Margin="5">
@@ -45,42 +48,25 @@
 
             <StackPanel Grid.Row="0" Grid.Column="0" Margin="0 0 5 5">
                 <Label Content="Betrag" Foreground="White" Style="{StaticResource lStyle}"/>
-                <TextBox Name="textBoxAmount" Validation.ErrorTemplate="{StaticResource ValidationTemplate}" Style="{StaticResource tbStyle}">
-                    <TextBox.Text>
-                        <Binding Path="Amount" UpdateSourceTrigger="PropertyChanged">
-                            <Binding.ValidationRules>
-                                <rules:BookingAmountValidationRule Min="0" Max="99999"/>
-                            </Binding.ValidationRules>
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
+                <TextBox Name="textBoxAmount" Style="{StaticResource tbStyle}" Text="{Binding Amount, StringFormat=n2}"/>
             </StackPanel>
 
             <DockPanel Grid.Row="0" Grid.Column="1" LastChildFill="False" Margin="5 0 0 5">
-                <DatePicker Name="datePickerBooking" Height="30" DockPanel.Dock="Bottom" FontSize="16"/>
+                <DatePicker Name="datePickerBooking" Height="30" DockPanel.Dock="Bottom" FontSize="16" SelectedDate="{Binding DateTime, TargetNullValue={x:Static System:DateTime.Now}}"/>
             </DockPanel>
 
-            <ComboBox Name="comboBoxBankAccount" Grid.Row="1" Grid.Column="0" Height="30" Margin="0 5 5 0"/>
-            <ComboBox Name="comboBoxCategory" Grid.Row="1" Grid.Column="1" Height="30" Margin="5 5 0 0"/>
+            <ComboBox Name="comboBoxBankAccount" Grid.Row="1" Grid.Column="0" Height="30" Margin="0 5 5 0" FontSize="16" ItemsSource="{Binding BankAccounts}" SelectedItem="{Binding BankAccount}" SelectedValue="{Binding BankAccounts[0]}" DisplayMemberPath="Name" />
+            <ComboBox Name="comboBoxCategory" Grid.Row="1" Grid.Column="1" Height="30" Margin="5 5 0 0" FontSize="16" ItemsSource="{Binding Categories}" SelectedItem="{Binding Category}" SelectedValue="{Binding Categories[0]}" DisplayMemberPath="Name"/>
 
         </Grid>
 
-        <Button Name="buttonAdd" Margin="5" Content="Hinzufügen" Height="30" FontSize="16" Command="{Binding AddBookingCommand}">
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="IsEnabled" Value="False"/>
-                    <Style.Triggers>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=textBoxTitle}" Value="False"/>
-                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=textBoxAmount}" Value="False"/>
-                            </MultiDataTrigger.Conditions>
-                            <Setter Property="IsEnabled" Value="True"/>
-                        </MultiDataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-        </Button>
+        <Button Name="buttonAdd" Margin="5" Content="Hinzufügen" Height="30" FontSize="16" Command="{Binding AddBookingCommand}"/>
+        
+        <TextBlock Text="{Binding Message}" 
+                   DataContext="{Binding ErrorMessageViewModel}"
+                   HorizontalAlignment="Center" 
+                   Foreground="DarkRed" 
+                   Visibility="{Binding HasMessage, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
     </StackPanel>
 </UserControl>

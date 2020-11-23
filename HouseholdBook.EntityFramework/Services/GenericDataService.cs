@@ -1,8 +1,6 @@
 ﻿using HouseholdBook.EntityFramework.Models;
 using HouseholdBook.EntityFramework.Services.Common;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace HouseholdBook.EntityFramework.Services
 {
-    public class BookingDataService : IDataService<Booking>
+    public class GenericDataService<T> : IDataService<T> where T : BaseModel
     {
         private readonly HouseholdDbContextFactory contextFactory;
-        private readonly NonQueryDataService<Booking> nonQueryDataService;
+        private readonly NonQueryDataService<T> nonQueryDataService;
 
-        public BookingDataService(HouseholdDbContextFactory contextFactory)
+        public GenericDataService(HouseholdDbContextFactory contextFactory)
         {
             this.contextFactory = contextFactory;
-            nonQueryDataService = new NonQueryDataService<Booking>(contextFactory);
+            nonQueryDataService = new NonQueryDataService<T>(contextFactory);
         }
 
-        public async Task<Booking> Create(Booking entity)
+        public async Task<T> Create(T entity)
         {
             return await nonQueryDataService.Create(entity);
         }
@@ -31,28 +29,28 @@ namespace HouseholdBook.EntityFramework.Services
             return await nonQueryDataService.Delete(id);
         }
 
-        public async Task<Booking> Get(int id)
+        public async Task<T> Get(int id)
         {
             using HouseholdDbContext context = contextFactory.CreateDbContext();
 
-            Booking entity = await context.Bookings.FirstOrDefaultAsync((e) => e.Id == id);
+            T entity = await context.Set<T>().FirstOrDefaultAsync((e) => e.Id == id);
             return entity;
         }
 
-        public Task<Booking> Get(string description)
+        public Task<T> Get(string description)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Booking>> GetAll()
+        public async Task<IEnumerable<T>> GetAll()
         {
             using HouseholdDbContext context = contextFactory.CreateDbContext();
 
-            IEnumerable<Booking> entities = await context.Bookings.Include(c => c.Category).Include(b => b.BankAccount).ToListAsync();
+            IEnumerable<T> entities = await context.Set<T>().ToListAsync();
             return entities;
         }
 
-        public async Task<Booking> Update(int id, Booking entity)
+        public async Task<T> Update(int id, T entity)
         {
             return await nonQueryDataService.Update(id, entity);
         }

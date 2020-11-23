@@ -7,11 +7,25 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800">
 
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
+    
     <Grid DockPanel.Dock="Top">
-        <TabControl Margin="5" Background="{StaticResource BrushPrimary2}" BorderThickness="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" 
+                   Text="{Binding Message}" 
+                   DataContext="{Binding ErrorMessageViewModel}"
+                   HorizontalAlignment="Center" 
+                   Foreground="DarkRed" 
+                   Visibility="{Binding HasMessage, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        <TabControl Grid.Row="1" Margin="5" Background="{StaticResource BrushPrimary2}" BorderThickness="0">
             <TabItem Header="ÜBERSICHT" Style="{StaticResource tiStyle}" IsSelected="True">
                 <Grid>
-                    <DataGrid x:Name="dgBookings" Style="{StaticResource dgStyle}" ItemsSource="{Binding Bookings}">
+                    <DataGrid x:Name="dgBookings" Style="{StaticResource dgStyle}" ItemsSource="{Binding Bookings, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True}">
                         <!--
                         <DataGrid.GroupStyle>
                             <GroupStyle ContainerStyle="{StaticResource giStyle}">

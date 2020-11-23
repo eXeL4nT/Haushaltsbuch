@@ -13,12 +13,12 @@ namespace HouseholdBook.WPF.Commands
     {
         public event EventHandler CanExecuteChanged;
 
-        private readonly AddBookingViewModel viewModel;
-        private readonly IDataService<Booking> bookingService;
+        private readonly AddBookingViewModel addBookingViewModel;
+        private readonly IBookingService bookingService;
 
-        public AddBookingCommand(AddBookingViewModel viewModel, IDataService<Booking> bookingService)
+        public AddBookingCommand(AddBookingViewModel addBookingViewModel, IBookingService bookingService)
         {
-            this.viewModel = viewModel;
+            this.addBookingViewModel = addBookingViewModel;
             this.bookingService = bookingService;
         }
 
@@ -29,7 +29,16 @@ namespace HouseholdBook.WPF.Commands
 
         public async void Execute(object parameter)
         {
-            await bookingService.Create(new Booking { Title = viewModel.Title, Amount = viewModel.Amount, Date = viewModel.Date, Category = viewModel.Category, BankAccount = viewModel.BankAccount });
+            addBookingViewModel.ErrorMessage = string.Empty;
+
+            try
+            {   
+                await bookingService.AddBooking(addBookingViewModel.Title, addBookingViewModel.Amount, addBookingViewModel.Date, addBookingViewModel.CategoryId, addBookingViewModel.BankAccountId);
+            }
+            catch (Exception e)
+            {
+                addBookingViewModel.ErrorMessage = e.Message;
+            }
         }
     }
 }

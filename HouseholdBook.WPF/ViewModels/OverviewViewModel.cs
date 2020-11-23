@@ -8,11 +8,30 @@ namespace HouseholdBook.WPF.ViewModels
 {
     public class OverviewViewModel : ViewModelBase
     {
-        public ICommand GetBookingsCommand { get; set; }
-        public List<Booking> Bookings { get; set; }
-
-        public OverviewViewModel(IDataService<Booking> bookingService)
+        private ICollection<Booking> bookings;
+        public ICollection<Booking> Bookings
         {
+            get => bookings;
+            set
+            {
+                bookings = value;
+                OnPropertyChanged(nameof(bookings));
+            }
+        }
+
+        public MessageViewModel ErrorMessageViewModel { get; }
+
+        public string ErrorMessage
+        {
+            set => ErrorMessageViewModel.Message = value;
+        }
+
+        public ICommand GetBookingsCommand { get; set; }
+
+        public OverviewViewModel(IBookingService bookingService)
+        {
+            ErrorMessageViewModel = new MessageViewModel();
+
             GetBookingsCommand = new GetBookingsCommand(this, bookingService);
             GetBookingsCommand.Execute(null);
         }

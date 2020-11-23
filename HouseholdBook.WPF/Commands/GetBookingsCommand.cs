@@ -1,22 +1,20 @@
-﻿using HouseholdBook.EntityFramework.Models;
-using HouseholdBook.EntityFramework.Services;
+﻿using HouseholdBook.EntityFramework.Services;
 using HouseholdBook.WPF.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Windows.Input;
 
 namespace HouseholdBook.WPF.Commands
 {
-    class GetBookingsCommand : ICommand
+    public class GetBookingsCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
 
-        private readonly OverviewViewModel viewModel;
-        private readonly IDataService<Booking> bookingService;
+        private readonly OverviewViewModel overviewViewModel;
+        private readonly IBookingService bookingService;
 
-        public GetBookingsCommand(OverviewViewModel viewModel, IDataService<Booking> bookingService)
+        public GetBookingsCommand(OverviewViewModel overviewViewModel, IBookingService bookingService)
         {
-            this.viewModel = viewModel;
+            this.overviewViewModel = overviewViewModel;
             this.bookingService = bookingService;
         }
 
@@ -25,10 +23,18 @@ namespace HouseholdBook.WPF.Commands
             return true;
         }
 
-        public async void Execute(object parameter)
+        public void Execute(object parameter)
         {
-            List<Booking> bookings = (List<Booking>) await bookingService.GetAll();
-            viewModel.Bookings = bookings;
+            overviewViewModel.ErrorMessage = string.Empty;
+
+            try
+            {
+                overviewViewModel.Bookings = bookingService.GetBookings().Result;
+            }
+            catch (Exception)
+            {
+                overviewViewModel.ErrorMessage = "Abrufen der Buchungen ist fehlgeschlagen!";
+            }
         }
     }
 }
