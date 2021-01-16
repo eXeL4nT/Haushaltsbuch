@@ -48,7 +48,7 @@ namespace HouseholdBook.WPF
 
                     services.AddSingleton<IHouseholdViewModelFactory, HouseholdViewModelFactory>();
                     services.AddSingleton<OverviewViewModel>();
-                    services.AddSingleton<AddBookingViewModel>();
+                    services.AddSingleton<AddEntryViewModel>();
                     services.AddSingleton<EditBookingViewModel>();
 
                     services.AddScoped<MainViewModel>();

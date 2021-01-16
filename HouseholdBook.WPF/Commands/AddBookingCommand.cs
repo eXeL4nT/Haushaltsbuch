@@ -11,15 +11,17 @@ namespace HouseholdBook.WPF.Commands
 {
     class AddBookingCommand : ICommand
     {
+        private event BookingCallback BookingCallback;
         public event EventHandler CanExecuteChanged;
 
-        private readonly AddBookingViewModel addBookingViewModel;
+        private readonly AddEntryViewModel _addEntryViewModel;
         private readonly IBookingService bookingService;
 
-        public AddBookingCommand(AddBookingViewModel addBookingViewModel, IBookingService bookingService)
+        public AddBookingCommand(AddEntryViewModel addBookingViewModel, IBookingService bookingService, BookingCallback bookingCallback)
         {
-            this.addBookingViewModel = addBookingViewModel;
+            this._addEntryViewModel = addBookingViewModel;
             this.bookingService = bookingService;
+            BookingCallback = bookingCallback;
         }
 
         public bool CanExecute(object parameter)
@@ -29,16 +31,27 @@ namespace HouseholdBook.WPF.Commands
 
         public async void Execute(object parameter)
         {
-            addBookingViewModel.ErrorMessage = string.Empty;
+            _addEntryViewModel.ErrorMessage = string.Empty;
 
             try
             {   
-                await bookingService.AddBooking(addBookingViewModel.Title, addBookingViewModel.Amount, addBookingViewModel.Date, addBookingViewModel.CategoryId, addBookingViewModel.BankAccountId);
+                await bookingService.AddBooking(_addEntryViewModel.Title, _addEntryViewModel.Amount, _addEntryViewModel.Date, _addEntryViewModel.SelectedCategory.Id, _addEntryViewModel.SelectedBankAccount.Id);
+                Cleanup();
+                BookingCallback?.Invoke();
             }
             catch (Exception e)
             {
-                addBookingViewModel.ErrorMessage = e.Message;
+                _addEntryViewModel.ErrorMessage = $"Die Buchung konnte nicht hinzugefügt werden. {e.Message}";
             }
+        }
+
+        private void Cleanup()
+        {
+            _addEntryViewModel.Title = null;
+            _addEntryViewModel.Amount = 0.00;
+            _addEntryViewModel.Date = null;
+            _addEntryViewModel.SelectedCategory = null;
+            _addEntryViewModel.SelectedBankAccount = null;
         }
     }
 }

@@ -7,7 +7,7 @@ namespace HouseholdBook.WPF
     public enum ViewType
     {
         Overview,
-        AddBooking,
+        AddEntry,
         Edit
     }
 }

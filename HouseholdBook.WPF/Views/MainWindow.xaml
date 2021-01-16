@@ -5,9 +5,13 @@
         xmlns:controls="clr-namespace:HouseholdBook.WPF.Views.Controls"
         x:Class="HouseholdBook.WPF.Views.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="700" MinWidth="615" MinHeight="500">
+        Title="Haushaltsbuch" Height="650" Width="700" MinWidth="615" MinHeight="500"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto">
 
-    <DockPanel LastChildFill="True" Background="{StaticResource BrushPrimary2}">
+    <DockPanel LastChildFill="True">
         <controls:ToolBar DockPanel.Dock="Top"/>
         <ContentControl DockPanel.Dock="Top" Content="{Binding CurrentViewModel}"/>
     </DockPanel>

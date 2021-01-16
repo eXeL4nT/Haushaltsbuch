@@ -18,30 +18,15 @@ namespace HouseholdBook.EntityFramework.Services
         public async Task<Booking> AddBooking(string title, double amount, string date, int categoryId, int bankAccountId)
         {
             
-            if (string.IsNullOrEmpty(title))
-            {
-                throw new Exception();
-            }
+            if (string.IsNullOrEmpty(title)) throw new Exception("Der Titel darf nicht leer sein.");
 
-            if (amount < 0.1)
-            {
-                throw new Exception();
-            }
+            if (amount < 0.01) throw new Exception("Der Betrag darf nicht weniger als 0,01 € betragen.");
 
-            if (string.IsNullOrEmpty(date))
-            {
-                throw new Exception();
-            }
+            if (string.IsNullOrEmpty(date)) throw new Exception("Das Datum darf nicht leer sein.");
 
-            if (categoryId <= 0)
-            {
-                throw new Exception();
-            }
+            if (categoryId <= 0) throw new Exception("Keine Kategorie angegeben.");
 
-            if (bankAccountId <= 0)
-            {
-                throw new Exception();
-            }
+            if (bankAccountId <= 0) throw new Exception("Kein Bank-Account angegeben.");
 
             Booking booking = new Booking() 
             { 
@@ -55,6 +40,11 @@ namespace HouseholdBook.EntityFramework.Services
             await bookingDataService.Create(booking);
 
             return booking;
+        }
+
+        public async void DeleteBooking(int bookingId)
+        {
+            await bookingDataService.Delete(bookingId);
         }
 
         public async Task<List<Booking>> GetBookings()

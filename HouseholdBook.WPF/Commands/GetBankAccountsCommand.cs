@@ -11,10 +11,10 @@ namespace HouseholdBook.WPF.Commands
     {
         public event EventHandler CanExecuteChanged;
 
-        private readonly AddBookingViewModel addBookingViewModel;
+        private readonly AddEntryViewModel addBookingViewModel;
         private readonly IBankAccountService bankAccountService;
 
-        public GetBankAccountsCommand(AddBookingViewModel addBookingViewModel, IBankAccountService bankAccountService)
+        public GetBankAccountsCommand(AddEntryViewModel addBookingViewModel, IBankAccountService bankAccountService)
         {
             this.addBookingViewModel = addBookingViewModel;
             this.bankAccountService = bankAccountService;
@@ -25,9 +25,10 @@ namespace HouseholdBook.WPF.Commands
             return true;
         }
 
-        public void Execute(object parameter)
+        public async void Execute(object parameter)
         {
-            addBookingViewModel.BankAccounts = bankAccountService.GetBankAccounts().Result;
+            var bankAccounts = await bankAccountService.GetBankAccounts();
+            addBookingViewModel.BankAccounts = bankAccounts;
         }
     }
 }

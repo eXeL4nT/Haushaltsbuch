@@ -4,15 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HouseholdBook.WPF"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <Grid Height="63" Background="#363636" DockPanel.Dock="Top">
+    <Grid Height="45" Background="#363636" DockPanel.Dock="Top">
         <Grid.Resources>
-            <Style TargetType="RadioButton" BasedOn="{StaticResource ToolRadioButton}"/>
-            <Style TargetType="Button" BasedOn="{StaticResource ToolButton}"/>
+            <!--<Style TargetType="RadioButton" BasedOn="{StaticResource ToolRadioButton}"/>-->
+            <Style TargetType="RadioButton"/>
+            <!--<Style TargetType="Button" BasedOn="{StaticResource ToolButton}"/>-->
         </Grid.Resources>
-
+        <!--
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
             <Button x:Name="btnOverview" Command="{Binding UpdateViewCommand}" CommandParameter="{x:Static local:ViewType.Overview}">
                 <StackPanel>
@@ -27,5 +29,27 @@
                 </StackPanel>
             </Button>
         </StackPanel>
+        -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="1"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="10 0">
+            <Button Style="{StaticResource ToolButtonDefault}" Content="Übersicht" Command="{Binding UpdateViewCommand}" CommandParameter="{x:Static local:ViewType.Overview}"/>
+            <Button Style="{StaticResource ToolButtonDefault}" Content="Neuer Eintrag" Command="{Binding UpdateViewCommand}" CommandParameter="{x:Static local:ViewType.AddEntry}"/>
+            <Button Style="{StaticResource ToolButtonDefault}" Content="Platzhalter"/>
+            <Button Style="{StaticResource ToolButtonDefault}" Content="Platzhalter"/>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="10 0">
+            <Button Style="{StaticResource ToolButtonQuestionMark}">
+            </Button>
+            <Button Style="{StaticResource ToolButtonExit}">
+            </Button>
+        </StackPanel>
+        <Grid x:Name="GridCursor" Grid.Row="1" Grid.ColumnSpan="2" Background="{StaticResource BrushAccent1}"/>
     </Grid>
 </UserControl>

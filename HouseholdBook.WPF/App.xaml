@@ -3,9 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:views="clr-namespace:HouseholdBook.WPF.Views"
              xmlns:viewmodels="clr-namespace:HouseholdBook.WPF.ViewModels"
-             xmlns:local="clr-namespace:HouseholdBook.WPF">
+             xmlns:local="clr-namespace:HouseholdBook.WPF"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
     <Application.Resources>
 
+        <!--
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Styles/Common.xaml"/>
@@ -26,6 +28,27 @@
                 <views:EditBookingView/>
             </DataTemplate>
         </ResourceDictionary>
+        -->
         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/Common.xaml"/>
+                <ResourceDictionary Source="/Styles/ToolBar.xaml"/>
+                <ResourceDictionary Source="/Styles/Overview.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewmodels:OverviewViewModel}">
+                <views:OverviewView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:AddEntryViewModel}">
+                <views:AddBookingView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodels:EditBookingViewModel}">
+                <views:EditBookingView/>
+            </DataTemplate>
+        </ResourceDictionary>
+
     </Application.Resources>
 </Application>

@@ -10,5 +10,6 @@ namespace HouseholdBook.EntityFramework.Services
     {
         Task<Booking> AddBooking(string title, double amount, string date, int categoryId, int bankAccountId);
         Task<List<Booking>> GetBookings();
+        void DeleteBooking(int bookingId);
     }
 }
