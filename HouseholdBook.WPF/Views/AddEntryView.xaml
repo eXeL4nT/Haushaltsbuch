@@ -18,10 +18,16 @@
         </ControlTemplate>
 
         <DataTemplate x:Key="CategoryItemTemplate">
-            <StackPanel Orientation="Horizontal">
-                <Label Content="{Binding Name}"/>
-                <Button HorizontalAlignment="Right" Height="15" Width="15" Command="{Binding Path=DataContext.DeleteCategoryCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}" Background="Red"/>
-            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Command="{Binding Path=DataContext.DeleteCategoryCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}" Width="15" Height="15" Background="{x:Null}" BorderThickness="0" Grid.Column="0">
+                    <Image Source="../Resources/img/minus-64.png"/>
+                </Button>
+                <Label Content="{Binding Name}" Grid.Column="1"/>
+            </Grid>
         </DataTemplate>
 
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
@@ -69,7 +75,7 @@
                             <Label Content="Datum" Style="{StaticResource lStyle}"/>
                             <DatePicker SelectedDate="{Binding Date, Mode=TwoWay}" FirstDayOfWeek="Monday" Style="{StaticResource dpStyle}"/>
                             <Label Content="Konto" Style="{StaticResource lStyle}"/>
-                            <ComboBox ItemsSource="{Binding BankAccounts}" SelectedItem="{Binding SelectedBankAccount}" SelectedValue="{Binding BankAccounts[0]}" DisplayMemberPath="Name" Style="{StaticResource cbStyle}"/>
+                            <ComboBox ItemsSource="{Binding BankAccounts}" SelectedItem="{Binding SelectedBankAccount}" DisplayMemberPath="Name" Style="{StaticResource cbStyle}"/>
                         </StackPanel>
                     </Grid>
                     <Button Content="Hinzufügen" Command="{Binding AddBookingCommand}" Style="{StaticResource bStyle}"/>

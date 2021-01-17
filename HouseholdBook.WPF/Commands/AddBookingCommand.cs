@@ -51,7 +51,6 @@ namespace HouseholdBook.WPF.Commands
             _addEntryViewModel.Amount = 0;
             _addEntryViewModel.Date = DateTime.Now;
             _addEntryViewModel.SelectedCategory = null;
-            _addEntryViewModel.SelectedBankAccount = null;
         }
     }
 }
