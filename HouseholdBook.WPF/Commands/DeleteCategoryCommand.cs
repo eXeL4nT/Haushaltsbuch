@@ -30,18 +30,18 @@ namespace HouseholdBook.WPF.Commands
             return true;
         }
 
-        public void Execute(object parameter)
+        public async void Execute(object parameter)
         {
             _addEntryViewModel.ErrorMessage = string.Empty;
 
             try
             {
-                _categoryService.DeleteCategory(parameter as Category);
+                await _categoryService.DeleteCategory(parameter as Category);
                 CategoryCallback?.Invoke();
             }
             catch (Exception e)
             {
-                _addEntryViewModel.ErrorMessage = $"Das Löschen der Kategorie hat nicht funktioniert. {e.Message}";
+                _addEntryViewModel.ErrorMessage = $"Fehler beim Bearbeiten der Daten. {e.Message}";
             }
         }
     }

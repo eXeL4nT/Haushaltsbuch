@@ -28,15 +28,15 @@ namespace HouseholdBook.EntityFramework.Services.Common
             return createdResult.Entity;
         }
 
-        public async Task<bool> Delete(int id)
+        public async Task<T> Delete(int id)
         {
             using HouseholdDbContext context = contextFactory.CreateDbContext();
 
             T entity = await context.Set<T>().FirstOrDefaultAsync(e => e.Id == id);
-            context.Set<T>().Remove(entity);
+            EntityEntry<T> deletedResult = context.Set<T>().Remove(entity);
             await context.SaveChangesAsync();
 
-            return true;
+            return deletedResult.Entity;
         }
 
         public async Task<T> Update(int id, T entity)

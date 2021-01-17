@@ -26,7 +26,7 @@ namespace HouseholdBook.EntityFramework.Services
             return await nonQueryDataService.Create(entity);
         }
 
-        public async Task<bool> Delete(int id)
+        public async Task<Category> Delete(int id)
         {
             return await nonQueryDataService.Delete(id);
         }
@@ -45,6 +45,11 @@ namespace HouseholdBook.EntityFramework.Services
 
             Category entity = await context.Categories.FirstOrDefaultAsync((e) => e.Name == description);
             return entity;
+        }
+
+        public Task<Category> Get(Category category)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<IEnumerable<Category>> GetAll()

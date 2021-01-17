@@ -35,9 +35,9 @@ namespace HouseholdBook.EntityFramework.Services
             return await bookingDataService.Create(booking);
         }
 
-        public async void DeleteBooking(Booking booking)
+        public async Task<Booking> DeleteBooking(Booking booking)
         {
-            await bookingDataService.Delete(booking.Id);
+            return await bookingDataService.Delete(booking.Id);
         }
 
         public async Task<List<Booking>> GetBookings()

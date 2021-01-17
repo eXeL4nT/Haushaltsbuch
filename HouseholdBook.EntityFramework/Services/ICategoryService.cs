@@ -11,6 +11,6 @@ namespace HouseholdBook.EntityFramework.Services
     {
         Task<ObservableCollection<Category>> GetCategories();
         Task<Category> AddCategory(string newCategory);
-        void DeleteCategory(Category category);
+        Task<Category> DeleteCategory(Category category);
     }
 }

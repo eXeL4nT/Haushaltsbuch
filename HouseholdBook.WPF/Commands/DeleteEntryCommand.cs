@@ -29,13 +29,13 @@ namespace HouseholdBook.WPF.Commands
             return true;
         }
 
-        public void Execute(object parameter)
+        public async void Execute(object parameter)
         {
             _overviewViewModel.ErrorMessage = string.Empty;
 
             try
             {
-                _bookingService.DeleteBooking(_overviewViewModel.SelectedBooking);
+                await _bookingService.DeleteBooking(_overviewViewModel.SelectedBooking);
                 BookingCallback?.Invoke();
             }
             catch (Exception)

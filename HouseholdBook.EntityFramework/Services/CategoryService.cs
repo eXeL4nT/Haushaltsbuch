@@ -9,16 +9,18 @@ namespace HouseholdBook.EntityFramework.Services
 {
     public class CategoryService : ICategoryService
     {
-        private readonly CategoryDataService categoryDataService;
+        private CategoryDataService _categoryDataService;
+        private BookingDataService _bookingDataService;
 
-        public CategoryService(CategoryDataService categoryDataService)
+        public CategoryService(CategoryDataService categoryDataService, BookingDataService bookingDataService)
         {
-            this.categoryDataService = categoryDataService;
+            _categoryDataService = categoryDataService;
+            _bookingDataService = bookingDataService;
         }
 
         public async Task<ObservableCollection<Category>> GetCategories()
         {
-            ObservableCollection<Category> categories = new ObservableCollection<Category>(await categoryDataService.GetAll());
+            ObservableCollection<Category> categories = new ObservableCollection<Category>(await _categoryDataService.GetAll());
 
             return categories;
         }
@@ -28,18 +30,26 @@ namespace HouseholdBook.EntityFramework.Services
             if (string.IsNullOrEmpty(newCategory)) throw new Exception("Die Kategorie muss einen Namen besitzen.");
             if (!CheckIfCategoryAlreadyExists(newCategory)) throw new Exception("Die Kategorie existiert bereits.");
 
-            return await categoryDataService.Create(new Category { Name = newCategory});
+            return await _categoryDataService.Create(new Category { Name = newCategory});
         }
 
-        public async void DeleteCategory(Category category)
+        public async Task<Category> DeleteCategory(Category category)
         {
-            //TODO CONTRAINT ABFRAGE
-            await categoryDataService.Delete(category.Id);
+            if (!CheckIfCategoryHasDependencies(category)) throw new Exception("Die Kategorie wird bereits verwendet und kann daher nicht gelöscht werden.");
+            
+            return await _categoryDataService.Delete(category.Id);
         }
 
-        private bool CheckIfCategoryAlreadyExists(string category)
+        private bool CheckIfCategoryAlreadyExists(string categoryName)
         {
-            var searchResult = categoryDataService.Get(category).Result;
+            var searchResult = _categoryDataService.Get(categoryName).Result;
+
+            return searchResult is null;
+        }
+
+        private bool CheckIfCategoryHasDependencies(Category category)
+        {
+            var searchResult = _bookingDataService.Get(category).Result;
 
             return searchResult is null;
         }

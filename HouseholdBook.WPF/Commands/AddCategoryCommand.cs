@@ -42,7 +42,7 @@ namespace HouseholdBook.WPF.Commands
             }
             catch (Exception e)
             {
-                _addEntryViewModel.ErrorMessage = $"Die Kategorie konnte nicht hinzugefügt werden. {e.Message}";
+                _addEntryViewModel.ErrorMessage = $"Fehler beim Bearbeiten der Daten. {e.Message}";
             }
         }
 

@@ -10,6 +10,6 @@ namespace HouseholdBook.EntityFramework.Services
     {
         Task<List<Booking>> GetBookings();
         Task<Booking> AddBooking(string title, double amount, DateTime date, Category category, BankAccount bankAccount);
-        void DeleteBooking(Booking booking);
+        Task<Booking> DeleteBooking(Booking booking);
     }
 }
