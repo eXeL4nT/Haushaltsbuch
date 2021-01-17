@@ -8,8 +8,8 @@ namespace HouseholdBook.EntityFramework.Services
 {
     public interface IBookingService
     {
-        Task<Booking> AddBooking(string title, double amount, string date, int categoryId, int bankAccountId);
         Task<List<Booking>> GetBookings();
-        void DeleteBooking(int bookingId);
+        Task<Booking> AddBooking(string title, double amount, DateTime date, Category category, BankAccount bankAccount);
+        void DeleteBooking(Booking booking);
     }
 }

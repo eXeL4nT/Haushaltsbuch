@@ -4,10 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:System="clr-namespace:System;assembly=mscorlib"
-      xmlns:local="clr-namespace:HouseholdBook.WPF"
-      xmlns:models="clr-namespace:HouseholdBook.EntityFramework.Models;assembly=HouseholdBook.EntityFramework"
-      xmlns:rules="clr-namespace:HouseholdBook.WPF.Rules"
-      xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+      xmlns:controls="clr-namespace:System.Windows.Controls;assembly=DotNetProjects.Input.Toolkit"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800">
 
@@ -19,6 +16,13 @@
                 </Grid>
             </Border>
         </ControlTemplate>
+
+        <DataTemplate x:Key="CategoryItemTemplate">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="{Binding Name}"/>
+                <Button HorizontalAlignment="Right" Height="15" Width="15" Command="{Binding Path=DataContext.DeleteCategoryCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}" Background="Red"/>
+            </StackPanel>
+        </DataTemplate>
 
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     </UserControl.Resources>
@@ -33,17 +37,19 @@
                    Text="{Binding Message}" 
                    DataContext="{Binding ErrorMessageViewModel}"
                    HorizontalAlignment="Center" 
-                   Foreground="DarkRed" 
+                   Foreground="DarkRed"
+                   FontSize="12"
+                   FontWeight="SemiBold"
                    Visibility="{Binding HasMessage, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
         <StackPanel Grid.Row="1">
-            <Expander IsExpanded="True" Margin="5">
-                <Expander.Header>
-                    <TextBlock Text="BUCHUNG HINZUFÜGEN" FontWeight="Bold" />
-                </Expander.Header>
+            <GroupBox Margin="5">
+                <GroupBox.Header>
+                    <TextBlock Text="BUCHUNG HINZUFÜGEN" FontWeight="Bold"/>
+                </GroupBox.Header>
                 <StackPanel Grid.Row="1">
-                    <Label Content="Titel"/>
-                    <TextBox Text="{Binding Title, Mode=TwoWay}" Margin="10 5 10 5" Height="25" FontSize="14"/>
+                    <Label Content="Titel" Style="{StaticResource lStyle}"/>
+                    <TextBox Text="{Binding Title, Mode=TwoWay}" Style="{StaticResource tbStyle}"/>
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
@@ -54,45 +60,31 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0" Orientation="Vertical">
-                            <Label Content="Betrag"/>
-                            <TextBox Margin="10 5 10 5" Text="{Binding Amount, StringFormat=N2, ConverterCulture=de-De, Mode=TwoWay}" Height="25" FontSize="14"/>
-                            <Label Content="Kategorie"/>
-                            <TextBox x:Name="tbCategory" Margin="10 5 10 5" Height="25" Text="{Binding SelectedItem.Name, ElementName=lbCategorySearchResults, Mode=TwoWay}">
-                                <i:Interaction.Triggers>
-        		                    <i:EventTrigger EventName="KeyUp">
-                                        <i:InvokeCommandAction Command="{Binding SearchCategoriesCommand}" CommandParameter="{Binding Text, ElementName=tbCategory}"/>
-                                    </i:EventTrigger>
-        	                    </i:Interaction.Triggers>
-                            </TextBox>
-                            <Border Margin="10 5 10 5">
-                                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                    <ListBox x:Name="lbCategorySearchResults" ItemsSource="{Binding SearchResults}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedCategory}" MaxHeight="70"/>
-                                </ScrollViewer>
-                            </Border>
+                            <Label Content="Betrag" Style="{StaticResource lStyle}"/>
+                            <TextBox Text="{Binding Amount, StringFormat=N2, ConverterCulture=de-De, Mode=TwoWay}" Style="{StaticResource tbStyle}"/>
+                            <Label Content="Kategorie" Style="{StaticResource lStyle}"/>
+                            <controls:AutoCompleteBox ItemsSource="{Binding Categories}" ValueMemberPath="Name" SelectedItem="{Binding SelectedCategory, Mode=TwoWay}" ItemTemplate="{StaticResource CategoryItemTemplate}" Style="{StaticResource acbStyle}"/>
                         </StackPanel>
                         <StackPanel Grid.Column="1" Orientation="Vertical">
-                            <Label Content="Datum"/>
-                            <DatePicker SelectedDate="{Binding DateTime, TargetNullValue={x:Static System:DateTime.Now}}" FontSize="14" Margin="10 5 10 5" Height="25" FirstDayOfWeek="Monday"/>
-                            <Label Content="Konto"/>
-                            <ComboBox Margin="10 5 10 5" Height="25" FontSize="14" ItemsSource="{Binding BankAccounts}" SelectedItem="{Binding SelectedBankAccount}" SelectedValue="{Binding BankAccounts[0]}" DisplayMemberPath="Name"/>
+                            <Label Content="Datum" Style="{StaticResource lStyle}"/>
+                            <DatePicker SelectedDate="{Binding Date, Mode=TwoWay}" FirstDayOfWeek="Monday" Style="{StaticResource dpStyle}"/>
+                            <Label Content="Konto" Style="{StaticResource lStyle}"/>
+                            <ComboBox ItemsSource="{Binding BankAccounts}" SelectedItem="{Binding SelectedBankAccount}" SelectedValue="{Binding BankAccounts[0]}" DisplayMemberPath="Name" Style="{StaticResource cbStyle}"/>
                         </StackPanel>
                     </Grid>
-                    <Button Content="Hinzufügen" Margin="10 5 10 5" Command="{Binding AddBookingCommand}" Height="25"/>
+                    <Button Content="Hinzufügen" Command="{Binding AddBookingCommand}" Style="{StaticResource bStyle}"/>
                 </StackPanel>
-            </Expander>
-            <Rectangle Margin="5" Height="2" Fill="LightGray"/>
-            <Expander IsExpanded="False" Margin="5">
-                <Expander.Header>
+            </GroupBox>
+            <GroupBox Margin="5">
+                <GroupBox.Header>
                     <TextBlock Text="KATEGORIE HINZUFÜGEN" FontWeight="Bold" />
-                </Expander.Header>
+                </GroupBox.Header>
                 <StackPanel Grid.Row="2">
-                    <TextBox Margin="10 5 10 5"/>
-                    <TextBox Margin="10 5 10 5"/>
-                    <TextBox Margin="10 5 10 5"/>
-                    <TextBox Margin="10 5 10 5"/>
-                    <Button Content="Hinzufügen" Margin="10 5 10 5"/>
+                    <Label Content="Kategoriename" Style="{StaticResource lStyle}"/>
+                    <TextBox Text="{Binding NewCategory, Mode=TwoWay}" Style="{StaticResource tbStyle}"/>
+                    <Button Content="Hinzufügen" Command="{Binding AddCategoryCommand}" Style="{StaticResource bStyle}"/>
                 </StackPanel>
-            </Expander>
+            </GroupBox>
         </StackPanel>
     </Grid>
 </UserControl>

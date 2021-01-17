@@ -23,17 +23,17 @@ namespace HouseholdBook.WPF.Commands
             return true;
         }
 
-        public void Execute(object parameter)
+        public async void Execute(object parameter)
         {
             overviewViewModel.ErrorMessage = string.Empty;
 
             try
             {
-                overviewViewModel.Bookings = bookingService.GetBookings().Result;
+                overviewViewModel.Bookings = await bookingService.GetBookings();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                overviewViewModel.ErrorMessage = "Abrufen der Buchungen ist fehlgeschlagen!";
+                overviewViewModel.ErrorMessage = $"Es ist ein Fehler beim Abrufen der Daten aufgetreten. {e.Message}";
             }
         }
     }

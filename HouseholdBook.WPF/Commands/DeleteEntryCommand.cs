@@ -10,19 +10,18 @@ namespace HouseholdBook.WPF.Commands
 {
     public class DeleteEntryCommand : ICommand
     {
-        private event BookingCallback _bookingCallback;
+        private event BookingCallback BookingCallback;
 
         public event EventHandler CanExecuteChanged;
 
         private readonly OverviewViewModel _overviewViewModel;
         private readonly IBookingService _bookingService;
 
-
         public DeleteEntryCommand(OverviewViewModel overviewViewModel, IBookingService bookingService, BookingCallback bookingCallback)
         {
             _overviewViewModel = overviewViewModel;
             _bookingService = bookingService;
-            _bookingCallback = bookingCallback;
+            BookingCallback = bookingCallback;
         }
 
         public bool CanExecute(object parameter)
@@ -36,9 +35,8 @@ namespace HouseholdBook.WPF.Commands
 
             try
             {
-                _bookingService.DeleteBooking(_overviewViewModel.SelectedBooking.Id);
-                //_overviewViewModel.GetBookingsCommand.Execute(null);
-                _bookingCallback?.Invoke();
+                _bookingService.DeleteBooking(_overviewViewModel.SelectedBooking);
+                BookingCallback?.Invoke();
             }
             catch (Exception)
             {

@@ -6,35 +6,13 @@
              xmlns:local="clr-namespace:HouseholdBook.WPF"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
     <Application.Resources>
-
-        <!--
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Styles/Common.xaml"/>
-                <ResourceDictionary Source="/Styles/ToolBar.xaml"/>
-                <ResourceDictionary Source="/Styles/Overview.xaml"/>
-                <ResourceDictionary Source="/Styles/AddBooking.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-
-            <DataTemplate DataType="{x:Type viewmodels:OverviewViewModel}">
-                <views:OverviewView/>
-            </DataTemplate>
-
-            <DataTemplate DataType="{x:Type viewmodels:AddBookingViewModel}">
-                <views:AddBookingView/>
-            </DataTemplate>
-
-            <DataTemplate DataType="{x:Type viewmodels:EditBookingViewModel}">
-                <views:EditBookingView/>
-            </DataTemplate>
-        </ResourceDictionary>
-        -->
         
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Styles/Common.xaml"/>
                 <ResourceDictionary Source="/Styles/ToolBar.xaml"/>
                 <ResourceDictionary Source="/Styles/Overview.xaml"/>
+                <ResourceDictionary Source="/Styles/AddEntry.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewmodels:OverviewViewModel}">

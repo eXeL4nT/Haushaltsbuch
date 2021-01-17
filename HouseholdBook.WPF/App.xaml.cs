@@ -40,7 +40,7 @@ namespace HouseholdBook.WPF
                     services.AddSingleton(new HouseholdDbContextFactory(configureDbContext));
 
                     services.AddSingleton<BookingDataService>();
-                    services.AddSingleton<IDataService<Category>, GenericDataService<Category>>();
+                    services.AddSingleton<CategoryDataService>();
                     services.AddSingleton<IDataService<BankAccount>, GenericDataService<BankAccount>>();
                     services.AddSingleton<IBookingService, BookingService>();
                     services.AddSingleton<ICategoryService, CategoryService>();

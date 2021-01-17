@@ -7,12 +7,32 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace HouseholdBook.WPF.ViewModels
-{ 
+{
+    public delegate void CategoryCallback();
+
     public class AddEntryViewModel : ViewModelBase
     {
-        public string Title { get; set; }
-        public double Amount { get; set; }
-        public string Date { get; set; } = System.DateTime.Now.ToString("dd.MM.yyyy");
+        private string _title;
+        public string Title
+        {
+            get => _title;
+            set
+            {
+                _title = value;
+                OnPropertyChanged(Title);
+            }
+        }
+
+        private double _amount;
+        public double Amount
+        {
+            get => _amount;
+            set
+            {
+                _amount = value;
+                OnPropertyChanged(nameof(Amount));
+            }
+        }
 
         private Category _selectedCategory;
         public Category SelectedCategory 
@@ -20,10 +40,8 @@ namespace HouseholdBook.WPF.ViewModels
             get => _selectedCategory;
             set
             {
-                if (value is null) return;
-
                 _selectedCategory = value;
-                OnPropertyChanged(nameof(_selectedCategory));
+                OnPropertyChanged(nameof(SelectedCategory));
             }
         }
 
@@ -33,43 +51,52 @@ namespace HouseholdBook.WPF.ViewModels
             get => _selectedBankAccount;
             set
             {
-                if (value is null) return;
-
                 _selectedBankAccount = value;
-                OnPropertyChanged(nameof(_selectedBankAccount));
+                OnPropertyChanged(nameof(SelectedBankAccount));
             }
         }
 
-        private DateTime? dateTime;
-        public DateTime? DateTime
+        private DateTime _date = DateTime.Now;
+        public DateTime Date
         {
-            get => dateTime;
+            get => _date;
             set
             {
-                Date = value.Value.ToString("dd.MM.yyyy");
-                dateTime = value;
+                _date = value;
+                OnPropertyChanged(nameof(Date));
             }
         }
 
-        private List<BankAccount> bankAccounts;
-        public List<BankAccount> BankAccounts
+        private ObservableCollection<Category> _categories;
+        public ObservableCollection<Category> Categories
         {
-            get => bankAccounts;
+            get => _categories;
             set
             {
-                bankAccounts = value;
-                OnPropertyChanged(nameof(bankAccounts));
+                _categories = value;
+                OnPropertyChanged(nameof(Categories));
             }
         }
-        
-        private ObservableCollection<Category> _searchResults = new ObservableCollection<Category>();
-        public ObservableCollection<Category> SearchResults
+
+        private IEnumerable<BankAccount> _bankAccounts;
+        public IEnumerable<BankAccount> BankAccounts
         {
-            get => _searchResults;
+            get => _bankAccounts;
             set
             {
-                _searchResults = value;
-                OnPropertyChanged(nameof(_searchResults));
+                _bankAccounts = value;
+                OnPropertyChanged(nameof(BankAccounts));
+            }
+        }
+
+        private string _newCategory;
+        public string NewCategory
+        {
+            get => _newCategory;
+            set
+            {
+                _newCategory = value;
+                OnPropertyChanged(NewCategory);
             }
         }
 
@@ -81,18 +108,28 @@ namespace HouseholdBook.WPF.ViewModels
         }
 
         public ICommand AddBookingCommand { get; set; }
-        public ICommand SearchCategoriesCommand { get; set; }
+        public ICommand AddCategoryCommand { get; set; }
+        public ICommand GetCategoriesCommand { get; set; }
         public ICommand GetBankAccountsCommand { get; set; }
+        public ICommand DeleteCategoryCommand { get; set; }
 
         public AddEntryViewModel(OverviewViewModel overviewViewModel, IBookingService bookingService, ICategoryService categoryService, IBankAccountService bankAccountService)
         {
             ErrorMessageViewModel = new MessageViewModel();
 
             AddBookingCommand = new AddBookingCommand(this, bookingService, overviewViewModel.OnBookingsChanged);
-            SearchCategoriesCommand = new SearchCategoriesCommand(this, categoryService);
+            AddCategoryCommand = new AddCategoryCommand(this, categoryService, OnCategoriesChanged);
+            GetCategoriesCommand = new GetCategoriesCommand(this, categoryService);
             GetBankAccountsCommand = new GetBankAccountsCommand(this, bankAccountService);
+            DeleteCategoryCommand = new DeleteCategoryCommand(this, categoryService, OnCategoriesChanged);
 
+            OnCategoriesChanged();
             GetBankAccountsCommand.Execute(null);
+        }
+
+        private void OnCategoriesChanged()
+        {
+            GetCategoriesCommand.Execute(null);
         }
     }
 }

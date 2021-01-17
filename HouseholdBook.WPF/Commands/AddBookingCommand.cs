@@ -35,7 +35,7 @@ namespace HouseholdBook.WPF.Commands
 
             try
             {   
-                await bookingService.AddBooking(_addEntryViewModel.Title, _addEntryViewModel.Amount, _addEntryViewModel.Date, _addEntryViewModel.SelectedCategory.Id, _addEntryViewModel.SelectedBankAccount.Id);
+                await bookingService.AddBooking(_addEntryViewModel.Title, _addEntryViewModel.Amount, _addEntryViewModel.Date, _addEntryViewModel.SelectedCategory, _addEntryViewModel.SelectedBankAccount);
                 Cleanup();
                 BookingCallback?.Invoke();
             }
@@ -45,11 +45,11 @@ namespace HouseholdBook.WPF.Commands
             }
         }
 
-        private void Cleanup()
+        public void Cleanup()
         {
             _addEntryViewModel.Title = null;
-            _addEntryViewModel.Amount = 0.00;
-            _addEntryViewModel.Date = null;
+            _addEntryViewModel.Amount = 0;
+            _addEntryViewModel.Date = DateTime.Now;
             _addEntryViewModel.SelectedCategory = null;
             _addEntryViewModel.SelectedBankAccount = null;
         }
