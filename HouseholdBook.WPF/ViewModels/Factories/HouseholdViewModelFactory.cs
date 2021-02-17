@@ -1,4 +1,5 @@
-﻿using HouseholdBook.EntityFramework.Services;
+﻿using HouseholdBook.EntityFramework;
+using HouseholdBook.EntityFramework.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,13 +8,13 @@ namespace HouseholdBook.WPF.ViewModels.Factories
 {
     public class HouseholdViewModelFactory : IHouseholdViewModelFactory
     {
-        private readonly OverviewViewModel _overviewViewModel;
-        private readonly AddEntryViewModel _addEntryViewModel;
+        private readonly CreateViewModel<OverviewViewModel> _createOverviewViewModel;
+        private readonly CreateViewModel<AddEntryViewModel> _createAddEntryViewModel;
 
-        public HouseholdViewModelFactory(OverviewViewModel overviewViewModel, AddEntryViewModel addEntryViewModel)
+        public HouseholdViewModelFactory(CreateViewModel<OverviewViewModel> createOverviewViewModel, CreateViewModel<AddEntryViewModel> createAddEntryViewModel)
         {
-            _overviewViewModel = overviewViewModel;
-            _addEntryViewModel = addEntryViewModel;
+            _createOverviewViewModel = createOverviewViewModel;
+            _createAddEntryViewModel = createAddEntryViewModel;
         }
         
         public ViewModelBase CreateViewModel(ViewType viewType)
@@ -21,9 +22,9 @@ namespace HouseholdBook.WPF.ViewModels.Factories
             switch (viewType)
             {
                 case ViewType.Overview:
-                    return _overviewViewModel;
+                    return _createOverviewViewModel();
                 case ViewType.AddEntry:
-                    return _addEntryViewModel;
+                    return _createAddEntryViewModel();
                 case ViewType.Edit:
                     return new EditBookingViewModel();
                 default:

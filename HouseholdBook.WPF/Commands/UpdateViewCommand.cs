@@ -9,13 +9,13 @@ namespace HouseholdBook.WPF.Commands
     {
         public event EventHandler CanExecuteChanged;
 
-        private readonly MainViewModel viewModel;
-        private readonly IHouseholdViewModelFactory viewModelFactory;
+        private readonly MainViewModel _viewModel;
+        private readonly IHouseholdViewModelFactory _viewModelFactory;
 
         public UpdateViewCommand(MainViewModel viewModel, IHouseholdViewModelFactory viewModelFactory)
         {
-            this.viewModel = viewModel;
-            this.viewModelFactory = viewModelFactory;
+            _viewModel = viewModel;
+            _viewModelFactory = viewModelFactory;
         }
 
         public bool CanExecute(object parameter)
@@ -27,7 +27,7 @@ namespace HouseholdBook.WPF.Commands
         {
             if (parameter is ViewType viewType)
             {
-                viewModel.CurrentViewModel = viewModelFactory.CreateViewModel(viewType);
+                _viewModel.CurrentViewModel = _viewModelFactory.CreateViewModel(viewType);
             }
         }
     }

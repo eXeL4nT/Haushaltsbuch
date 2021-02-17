@@ -8,8 +8,7 @@ namespace HouseholdBook.EntityFramework
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<BankAccount> BankAccounts { get; set; }
-        public DbSet<Type> Types { get; set; }
 
-        public HouseholdDbContext(DbContextOptions options) : base(options) { }
+        public HouseholdDbContext(DbContextOptions<HouseholdDbContext> options) : base(options) { }
     }
 }

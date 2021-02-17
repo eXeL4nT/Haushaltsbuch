@@ -1,7 +1,7 @@
 ﻿using HouseholdBook.WPF.ViewModels;
 using System.Windows;
 
-namespace HouseholdBook.WPF.Views
+namespace HouseholdBook.WPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

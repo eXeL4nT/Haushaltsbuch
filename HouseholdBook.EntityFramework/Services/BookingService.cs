@@ -15,19 +15,25 @@ namespace HouseholdBook.EntityFramework.Services
             this.bookingDataService = bookingDataService;
         }
 
-        public async Task<Booking> AddBooking(string title, double amount, DateTime date, Category category, BankAccount bankAccount)
+        public async Task<Booking> AddBooking(string title, double amount, DateTime date, BookingOption bookingOption, Category category, BankAccount bankAccount)
         {
             
-            if (string.IsNullOrEmpty(title)) throw new Exception("Der Titel darf nicht leer sein.");
-            if (amount < 0.01) throw new Exception("Der Betrag darf nicht weniger als 0,01 € betragen.");
-            if (category is null) throw new Exception("Keine Kategorie angegeben.");
-            if (bankAccount is null) throw new Exception("Kein Bank-Account angegeben.");
+            if (string.IsNullOrEmpty(title) || title.Length < 3) throw new Exception("Bitte einen Titel eintragen mit mindestens 3 Zeichen angeben.");
+            if (amount < 0.01) throw new Exception("Bitte einen Betrag von mindestens 0,01 € eintragen.");
+            if (category is null) throw new Exception("Es wurde keine Kategorie angegeben.");
+            if (bankAccount is null) throw new Exception("Es wurde kein Konto ausgewählt.");
 
-            Booking booking = new Booking() 
-            { 
-                Title = title, 
-                Amount = amount, 
-                Date = date.ToString("dd.MM.yyyy"), 
+            if (bookingOption == BookingOption.Expenditure)
+            {
+                amount *= -1;
+            }
+
+            Booking booking = new Booking()
+            {
+                Title = title,
+                Amount = amount,
+                Date = date.ToString("dd.MM.yyyy"),
+                BookingOption = (int) bookingOption,
                 CategoryId = category.Id, 
                 BankAccountId = bankAccount.Id
             };

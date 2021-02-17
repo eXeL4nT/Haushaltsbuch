@@ -3,6 +3,8 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:converters="clr-namespace:HouseholdBook.WPF.Converters"
+      xmlns:local="clr-namespace:HouseholdBook.WPF"
       xmlns:System="clr-namespace:System;assembly=mscorlib"
       xmlns:controls="clr-namespace:System.Windows.Controls;assembly=DotNetProjects.Input.Toolkit"
       mc:Ignorable="d" 
@@ -31,6 +33,8 @@
         </DataTemplate>
 
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+
+        <converters:BookingOptionConverter x:Key="bookingOptionConverter"/>
     </UserControl.Resources>
     
     <Grid>
@@ -54,6 +58,10 @@
                     <TextBlock Text="BUCHUNG HINZUFÜGEN" FontWeight="Bold"/>
                 </GroupBox.Header>
                 <StackPanel Grid.Row="1">
+                    <StackPanel Orientation="Horizontal">
+                        <RadioButton GroupName="booking" Style="{StaticResource rbStyle}" IsChecked="{Binding BookingOption, Converter={StaticResource bookingOptionConverter}, ConverterParameter=Expenditure}" Content="Ausgabe"/>
+                        <RadioButton GroupName="booking" Style="{StaticResource rbStyle}" IsChecked="{Binding BookingOption, Converter={StaticResource bookingOptionConverter}, ConverterParameter=Revenue}" Content="Einnahme"/>
+                    </StackPanel>
                     <Label Content="Titel" Style="{StaticResource lStyle}"/>
                     <TextBox Text="{Binding Title, Mode=TwoWay}" Style="{StaticResource tbStyle}"/>
                     <Grid>

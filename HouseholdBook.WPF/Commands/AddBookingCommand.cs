@@ -35,13 +35,13 @@ namespace HouseholdBook.WPF.Commands
 
             try
             {   
-                await bookingService.AddBooking(_addEntryViewModel.Title, _addEntryViewModel.Amount, _addEntryViewModel.Date, _addEntryViewModel.SelectedCategory, _addEntryViewModel.SelectedBankAccount);
+                await bookingService.AddBooking(_addEntryViewModel.Title, _addEntryViewModel.Amount, _addEntryViewModel.Date, _addEntryViewModel.BookingOption, _addEntryViewModel.SelectedCategory, _addEntryViewModel.SelectedBankAccount);
                 Cleanup();
                 BookingCallback?.Invoke();
             }
             catch (Exception e)
             {
-                _addEntryViewModel.ErrorMessage = $"Die Buchung konnte nicht hinzugefügt werden. {e.Message}";
+                _addEntryViewModel.ErrorMessage = $"Es ist ein Fehler aufgetreten. {e.Message}";
             }
         }
 
@@ -50,6 +50,7 @@ namespace HouseholdBook.WPF.Commands
             _addEntryViewModel.Title = null;
             _addEntryViewModel.Amount = 0;
             _addEntryViewModel.Date = DateTime.Now;
+            //_addEntryViewModel.BookingOption = 0;
             _addEntryViewModel.SelectedCategory = null;
         }
     }

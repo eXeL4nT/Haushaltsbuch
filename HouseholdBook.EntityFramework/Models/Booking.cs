@@ -8,6 +8,7 @@ namespace HouseholdBook.EntityFramework.Models
         public string Title { get; set; }
         public double Amount { get; set; }
         public string Date { get; set; }
+        public int BookingOption { get; set; }
 
         public int CategoryId { get; set; }
         public Category Category { get; set; }

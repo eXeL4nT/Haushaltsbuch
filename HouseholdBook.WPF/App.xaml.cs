@@ -10,6 +10,7 @@ using System.Windows;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using HouseholdBook.WPF.HostBuilders;
 
 namespace HouseholdBook.WPF
 {
@@ -18,57 +19,34 @@ namespace HouseholdBook.WPF
     /// </summary>
     public partial class App : Application
     {
-        private readonly IHost host;
+        private readonly IHost _host;
 
         public App()
         {
-            host = CreateHostBuilder().Build();
+            _host = CreateHostBuilder().Build();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args = null)
         {
             return Host.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration(c =>
-                {
-                    c.AddJsonFile("appsettings.json");
-                })
-                .ConfigureServices((context, services) =>
-                {
-                    string connectionString = context.Configuration.GetConnectionString("sqlite");
-                    Action<DbContextOptionsBuilder> configureDbContext = d => d.UseSqlite(connectionString);
-                    services.AddDbContext<HouseholdDbContext>(configureDbContext);
-                    services.AddSingleton(new HouseholdDbContextFactory(configureDbContext));
-
-                    services.AddSingleton<BookingDataService>();
-                    services.AddSingleton<CategoryDataService>();
-                    services.AddSingleton<IDataService<BankAccount>, GenericDataService<BankAccount>>();
-                    services.AddSingleton<IBookingService, BookingService>();
-                    services.AddSingleton<ICategoryService, CategoryService>();
-                    services.AddSingleton<IBankAccountService, BankAccountService>();
-
-                    services.AddSingleton<IHouseholdViewModelFactory, HouseholdViewModelFactory>();
-                    services.AddSingleton<OverviewViewModel>();
-                    services.AddSingleton<AddEntryViewModel>();
-                    services.AddSingleton<EditBookingViewModel>();
-
-                    services.AddScoped<MainViewModel>();
-
-                    services.AddScoped(s => new MainWindow(s.GetRequiredService<MainViewModel>()));
-
-                });
+                .AddConfiguration()
+                .AddDbContext()
+                .AddServices()
+                .AddViewModels()
+                .AddViews();
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            host.Start();
+            _host.Start();
             
-            HouseholdDbContextFactory contextFactory = host.Services.GetRequiredService<HouseholdDbContextFactory>();
+            HouseholdDbContextFactory contextFactory = _host.Services.GetRequiredService<HouseholdDbContextFactory>();
             using (HouseholdDbContext context = contextFactory.CreateDbContext())
             {
                 context.Database.Migrate();
             }
            
-            Window window = host.Services.GetRequiredService<MainWindow>();
+            Window window = _host.Services.GetRequiredService<MainWindow>();
             window.Show();
 
             base.OnStartup(e);
@@ -76,8 +54,8 @@ namespace HouseholdBook.WPF
 
         protected override async void OnExit(ExitEventArgs e)
         {
-            await host.StopAsync();
-            host.Dispose();
+            await _host.StopAsync();
+            _host.Dispose();
 
             base.OnExit(e);
         }

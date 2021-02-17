@@ -6,20 +6,20 @@ using System.Text;
 
 namespace HouseholdBook.EntityFramework
 {
-    public class HouseholdDbContextFactory
+    public class HouseholdDbContextFactory : IDesignTimeDbContextFactory<HouseholdDbContext>
     {
-        private readonly Action<DbContextOptionsBuilder> configureDbContext;
+        private readonly Action<DbContextOptionsBuilder> _configureDbContext;
 
         public HouseholdDbContextFactory(Action<DbContextOptionsBuilder> configureDbContext)
         {
-            this.configureDbContext = configureDbContext;
+            _configureDbContext = configureDbContext;
         }
 
-        public HouseholdDbContext CreateDbContext()
+        public HouseholdDbContext CreateDbContext(string[] args = null)
         {
-            DbContextOptionsBuilder<HouseholdDbContext> options = new DbContextOptionsBuilder<HouseholdDbContext>();
+            var options = new DbContextOptionsBuilder<HouseholdDbContext>();
 
-            configureDbContext(options);
+            _configureDbContext(options);
 
             return new HouseholdDbContext(options.Options);
         }

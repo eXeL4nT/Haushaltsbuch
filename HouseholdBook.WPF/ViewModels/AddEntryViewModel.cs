@@ -1,4 +1,5 @@
-﻿using HouseholdBook.EntityFramework.Models;
+﻿using HouseholdBook.EntityFramework;
+using HouseholdBook.EntityFramework.Models;
 using HouseholdBook.EntityFramework.Services;
 using HouseholdBook.WPF.Commands;
 using System;
@@ -64,6 +65,17 @@ namespace HouseholdBook.WPF.ViewModels
             {
                 _date = value;
                 OnPropertyChanged(nameof(Date));
+            }
+        }
+
+        private BookingOption _bookingOption;
+        public BookingOption BookingOption
+        {
+            get => _bookingOption;
+            set
+            {
+                _bookingOption = value;
+                OnPropertyChanged(nameof(BookingOption));
             }
         }
 

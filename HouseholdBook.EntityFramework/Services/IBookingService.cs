@@ -9,7 +9,7 @@ namespace HouseholdBook.EntityFramework.Services
     public interface IBookingService
     {
         Task<List<Booking>> GetBookings();
-        Task<Booking> AddBooking(string title, double amount, DateTime date, Category category, BankAccount bankAccount);
+        Task<Booking> AddBooking(string title, double amount, DateTime date, BookingOption bookingOption, Category category, BankAccount bankAccount);
         Task<Booking> DeleteBooking(Booking booking);
     }
 }

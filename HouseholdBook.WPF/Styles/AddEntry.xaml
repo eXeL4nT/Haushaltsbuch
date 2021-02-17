@@ -33,7 +33,13 @@
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontWeight" Value="UltraLight"/>
     </Style>
-    
+
+    <Style x:Key="rbStyle" TargetType="RadioButton">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="UltraLight"/>
+        <Setter Property="Margin" Value="5 10 10 5"/>
+    </Style>
+
     <Style x:Key="tbStyle" TargetType="TextBox">
         <Setter Property="Margin" Value="10 5 10 5"/>
         <Setter Property="Height" Value="25"/>

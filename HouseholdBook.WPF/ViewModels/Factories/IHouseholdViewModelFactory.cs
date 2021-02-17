@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HouseholdBook.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
