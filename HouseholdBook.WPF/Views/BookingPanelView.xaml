@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="HouseholdBook.WPF.Views.BookingPanelView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converters="clr-namespace:HouseholdBook.WPF.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             xmlns:views="clr-namespace:HouseholdBook.WPF.Views"
+             xmlns:viewmodels="clr-namespace:HouseholdBook.WPF.ViewModels"
+>
+    
+    <UserControl.Resources>
+        <converters:AmountConverter x:Key="AmountConverter"/>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Booking.Title}" FontWeight="Bold" FontSize="15"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Booking.Category.Name}" FontSize="15"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Booking.Date}" HorizontalAlignment="Right" FontSize="15"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Booking.Amount, StringFormat=N2, ConverterCulture=de-De}" HorizontalAlignment="Right" FontSize="17">
+            <TextBlock.Style>
+                <Style>
+                    <Setter Property="TextBlock.Foreground" Value="{Binding Booking.Amount, Converter={StaticResource AmountConverter}}"/>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+    </Grid>
+
+</UserControl>

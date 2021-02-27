@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -52,11 +53,11 @@ namespace HouseholdBook.EntityFramework.Services
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Category>> GetAll()
+        public async Task<ObservableCollection<Category>> GetAll()
         {
             using HouseholdDbContext context = contextFactory.CreateDbContext();
 
-            IEnumerable<Category> entities = await context.Categories.ToListAsync();
+            var entities = new ObservableCollection<Category>(await context.Categories.ToListAsync());
             return entities;
         }
 

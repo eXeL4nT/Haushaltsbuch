@@ -3,6 +3,7 @@ using HouseholdBook.EntityFramework.Services.Common;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -47,11 +48,11 @@ namespace HouseholdBook.EntityFramework.Services
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<T>> GetAll()
+        public async Task<ObservableCollection<T>> GetAll()
         {
             using HouseholdDbContext context = contextFactory.CreateDbContext();
 
-            IEnumerable<T> entities = await context.Set<T>().ToListAsync();
+            var entities = new ObservableCollection<T>(await context.Set<T>().ToListAsync());
             return entities;
         }
 

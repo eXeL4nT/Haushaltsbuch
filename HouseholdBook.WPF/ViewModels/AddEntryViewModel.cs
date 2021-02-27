@@ -2,6 +2,8 @@
 using HouseholdBook.EntityFramework.Models;
 using HouseholdBook.EntityFramework.Services;
 using HouseholdBook.WPF.Commands;
+using HouseholdBook.WPF.Services;
+using HouseholdBook.WPF.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -79,27 +81,8 @@ namespace HouseholdBook.WPF.ViewModels
             }
         }
 
-        private ObservableCollection<Category> _categories;
-        public ObservableCollection<Category> Categories
-        {
-            get => _categories;
-            set
-            {
-                _categories = value;
-                OnPropertyChanged(nameof(Categories));
-            }
-        }
-
-        private IEnumerable<BankAccount> _bankAccounts;
-        public IEnumerable<BankAccount> BankAccounts
-        {
-            get => _bankAccounts;
-            set
-            {
-                _bankAccounts = value;
-                OnPropertyChanged(nameof(BankAccounts));
-            }
-        }
+        public ObservableCollection<Category> Categories { get; set; } = new ObservableCollection<Category>();
+        public ObservableCollection<BankAccount> BankAccounts { get; set; } = new ObservableCollection<BankAccount>();
 
         private string _newCategory;
         public string NewCategory
@@ -129,19 +112,27 @@ namespace HouseholdBook.WPF.ViewModels
         {
             ErrorMessageViewModel = new MessageViewModel();
 
-            AddBookingCommand = new AddBookingCommand(this, bookingService, overviewViewModel.OnBookingsChanged);
-            AddCategoryCommand = new AddCategoryCommand(this, categoryService, OnCategoriesChanged);
+            Categories.CollectionChanged += OnCollectionChanged;
+            BankAccounts.CollectionChanged += OnCollectionChanged;
+
+            AddBookingCommand = new AddBookingCommand(this, overviewViewModel, bookingService);
+            AddCategoryCommand = new AddCategoryCommand(this, categoryService);
             GetCategoriesCommand = new GetCategoriesCommand(this, categoryService);
             GetBankAccountsCommand = new GetBankAccountsCommand(this, bankAccountService);
-            DeleteCategoryCommand = new DeleteCategoryCommand(this, categoryService, OnCategoriesChanged);
+            DeleteCategoryCommand = new DeleteCategoryCommand(this, categoryService);
 
-            OnCategoriesChanged();
-            GetBankAccountsCommand.Execute(null);
+            GetCategories();
+            GetBankAccounts();
         }
 
-        private void OnCategoriesChanged()
+        private void GetCategories()
         {
             GetCategoriesCommand.Execute(null);
+        }
+
+        private void GetBankAccounts()
+        {
+            GetBankAccountsCommand.Execute(null);
         }
     }
 }

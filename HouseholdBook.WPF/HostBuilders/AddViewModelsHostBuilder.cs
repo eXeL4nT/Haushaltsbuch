@@ -1,5 +1,6 @@
 ﻿using HouseholdBook.WPF.ViewModels;
 using HouseholdBook.WPF.ViewModels.Factories;
+using HouseholdBook.WPF.Views;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;

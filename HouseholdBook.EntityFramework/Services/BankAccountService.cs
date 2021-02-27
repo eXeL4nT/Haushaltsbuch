@@ -1,6 +1,7 @@
 ﻿using HouseholdBook.EntityFramework.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,9 +16,9 @@ namespace HouseholdBook.EntityFramework.Services
             this.bankAccountDataService = bankAccountDataService;
         }
 
-        public async Task<List<BankAccount>> GetBankAccounts()
+        public async Task<ObservableCollection<BankAccount>> GetBankAccounts()
         {
-            List<BankAccount> bankAccounts = (List<BankAccount>)await bankAccountDataService.GetAll();
+            var bankAccounts = await bankAccountDataService.GetAll();
 
             return bankAccounts;
         }

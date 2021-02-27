@@ -11,8 +11,8 @@ namespace HouseholdBook.WPF.Commands
     {
         public event EventHandler CanExecuteChanged;
 
-        private AddEntryViewModel _addEntryViewModel;
-        private ICategoryService _categoryService;
+        private readonly AddEntryViewModel _addEntryViewModel;
+        private readonly ICategoryService _categoryService;
 
         public GetCategoriesCommand(AddEntryViewModel addEntryViewModel, ICategoryService categoryService)
         {
@@ -31,7 +31,7 @@ namespace HouseholdBook.WPF.Commands
 
             try
             {
-                _addEntryViewModel.Categories =  await _categoryService.GetCategories();
+                _addEntryViewModel.Categories = await _categoryService.GetCategories();
             }
             catch (Exception e)
             {

@@ -12,7 +12,7 @@
         TextOptions.TextRenderingMode="Auto">
 
     <DockPanel LastChildFill="True">
-        <controls:ToolBar DockPanel.Dock="Top"/>
-        <ContentControl DockPanel.Dock="Top" Content="{Binding CurrentViewModel}"/>
+        <controls:ToolBar DockPanel.Dock="Left"/>
+        <ContentControl DockPanel.Dock="Right" Content="{Binding CurrentViewModel}"/>
     </DockPanel>
 </Window>

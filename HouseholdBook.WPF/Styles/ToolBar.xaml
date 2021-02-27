@@ -3,8 +3,9 @@
                     xmlns:local="clr-namespace:HouseholdBook.WPF.Styles">
 
     <Style x:Key="ToolButtonDefault" TargetType="Button">
-        <Setter Property="Width" Value="130"/>
-        <Setter Property="Background" Value="{x:Null}"/>
+        <Setter Property="Width" Value="65"/>
+        <Setter Property="Height" Value="60"/>
+        <Setter Property="Background" Value="#363636"/>
         <Setter Property="BorderBrush" Value="{x:Null}"/>
         <Setter Property="Foreground" Value="White"/>
 
@@ -20,6 +21,9 @@
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#303030"/>
+            </Trigger>
+            <Trigger Property="IsFocused" Value="True">
                 <Setter Property="Background" Value="#303030"/>
             </Trigger>
         </Style.Triggers>

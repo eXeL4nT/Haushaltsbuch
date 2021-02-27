@@ -1,4 +1,5 @@
 ﻿using HouseholdBook.EntityFramework.Models;
+using HouseholdBook.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -16,9 +17,9 @@ namespace HouseholdBook.WPF.Converters
 
             double sum = 0;
 
-            foreach (var booking in bookings)
+            foreach (BookingPanelViewModel booking in bookings)
             {
-                sum += ((Booking)booking).Amount;
+                sum += booking.Booking.Amount;
             }
 
             return sum.ToString("c");

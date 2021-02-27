@@ -1,6 +1,7 @@
 ﻿using HouseholdBook.EntityFramework.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,7 +9,7 @@ namespace HouseholdBook.EntityFramework.Services
 {
     public interface IDataService<T>
     {
-        Task<IEnumerable<T>> GetAll();
+        Task<ObservableCollection<T>> GetAll();
 
         Task<T> Get(int id);
 

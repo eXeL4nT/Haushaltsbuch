@@ -25,8 +25,6 @@ namespace HouseholdBook.WPF.ViewModels.Factories
                     return _createOverviewViewModel();
                 case ViewType.AddEntry:
                     return _createAddEntryViewModel();
-                case ViewType.Edit:
-                    return new EditBookingViewModel();
                 default:
                     throw new ArgumentException("Der ViewType besitzt kein ViewModel.", "viewType");
             }

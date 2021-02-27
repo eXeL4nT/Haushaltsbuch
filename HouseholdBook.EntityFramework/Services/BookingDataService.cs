@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -52,11 +53,11 @@ namespace HouseholdBook.EntityFramework.Services
             return entity;
         }
 
-        public async Task<IEnumerable<Booking>> GetAll()
+        public async Task<ObservableCollection<Booking>> GetAll()
         {
             using HouseholdDbContext context = contextFactory.CreateDbContext();
 
-            IEnumerable<Booking> entities = await context.Bookings.Include(c => c.Category).Include(b => b.BankAccount).ToListAsync();
+            var entities = new ObservableCollection<Booking>(await context.Bookings.Include(c => c.Category).Include(b => b.BankAccount).ToListAsync());
             return entities;
         }
 

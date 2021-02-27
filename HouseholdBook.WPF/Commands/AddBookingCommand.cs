@@ -1,6 +1,8 @@
 ﻿using HouseholdBook.EntityFramework.Models;
 using HouseholdBook.EntityFramework.Services;
+using HouseholdBook.WPF.Services;
 using HouseholdBook.WPF.ViewModels;
+using HouseholdBook.WPF.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,17 +13,17 @@ namespace HouseholdBook.WPF.Commands
 {
     class AddBookingCommand : ICommand
     {
-        private event BookingCallback BookingCallback;
         public event EventHandler CanExecuteChanged;
 
         private readonly AddEntryViewModel _addEntryViewModel;
-        private readonly IBookingService bookingService;
+        private readonly OverviewViewModel _overviewViewModel;
+        private readonly IBookingService _bookingService;
 
-        public AddBookingCommand(AddEntryViewModel addBookingViewModel, IBookingService bookingService, BookingCallback bookingCallback)
+        public AddBookingCommand(AddEntryViewModel addBookingViewModel, OverviewViewModel overviewViewModel, IBookingService bookingService)
         {
-            this._addEntryViewModel = addBookingViewModel;
-            this.bookingService = bookingService;
-            BookingCallback = bookingCallback;
+            _addEntryViewModel = addBookingViewModel;
+            _overviewViewModel = overviewViewModel;
+            _bookingService = bookingService;
         }
 
         public bool CanExecute(object parameter)
@@ -35,9 +37,10 @@ namespace HouseholdBook.WPF.Commands
 
             try
             {   
-                await bookingService.AddBooking(_addEntryViewModel.Title, _addEntryViewModel.Amount, _addEntryViewModel.Date, _addEntryViewModel.BookingOption, _addEntryViewModel.SelectedCategory, _addEntryViewModel.SelectedBankAccount);
+                var booking = await _bookingService.AddBooking(_addEntryViewModel.Title, _addEntryViewModel.Amount, _addEntryViewModel.Date, _addEntryViewModel.BookingOption, _addEntryViewModel.SelectedCategory, _addEntryViewModel.SelectedBankAccount);
+                _overviewViewModel.Bookings.Add(new BookingPanelViewModel(_overviewViewModel, booking, _bookingService));
+                
                 Cleanup();
-                BookingCallback?.Invoke();
             }
             catch (Exception e)
             {

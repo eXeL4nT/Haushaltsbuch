@@ -8,28 +8,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <Grid Height="45" Background="#363636" DockPanel.Dock="Top">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="1"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="10 0">
-            <Button Command="{Binding UpdateViewCommand}" CommandParameter="{x:Static local:ViewType.Overview}" Style="{StaticResource ToolButtonDefault}">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="../../Resources/img/home-64.png" Width="16"/>
-                    <TextBlock Margin="5 0 0 0">ÜBERSICHT</TextBlock>
-                </StackPanel>
-            </Button>
-            <Button Command="{Binding UpdateViewCommand}" CommandParameter="{x:Static local:ViewType.AddEntry}" Style="{StaticResource ToolButtonDefault}" >
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="../../Resources/img/edit.png" Width="16"/>
-                    <TextBlock Margin="5 0 0 0">NEUER EINTRAG</TextBlock>
-                </StackPanel>
-            </Button>
-        </StackPanel>
-        <Grid x:Name="GridCursor" Grid.Row="1" Background="{StaticResource BrushAccent1}"/>
-    </Grid>
+    <StackPanel Background="#363636">
+        <Button Command="{Binding UpdateViewCommand}" CommandParameter="{x:Static local:ViewType.Overview}" Style="{StaticResource ToolButtonDefault}">
+            <Image Source="../../Resources/img/home-64.png" Width="28"/>
+        </Button>
+        <Button Command="{Binding UpdateViewCommand}" CommandParameter="{x:Static local:ViewType.AddEntry}" Style="{StaticResource ToolButtonDefault}" >
+            <Image Source="../../Resources/img/edit.png" Width="28"/>
+        </Button>
+    </StackPanel>
 </UserControl>

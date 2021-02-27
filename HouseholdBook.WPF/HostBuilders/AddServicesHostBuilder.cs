@@ -1,5 +1,6 @@
 ﻿using HouseholdBook.EntityFramework.Models;
 using HouseholdBook.EntityFramework.Services;
+using HouseholdBook.WPF.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;

@@ -1,6 +1,7 @@
 ﻿using HouseholdBook.EntityFramework.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -46,9 +47,9 @@ namespace HouseholdBook.EntityFramework.Services
             return await bookingDataService.Delete(booking.Id);
         }
 
-        public async Task<List<Booking>> GetBookings()
+        public async Task<ObservableCollection<Booking>> GetBookings()
         {
-            List<Booking> bookings = (List<Booking>)await bookingDataService.GetAll();
+            ObservableCollection<Booking> bookings = await bookingDataService.GetAll();
 
             return bookings;
         }

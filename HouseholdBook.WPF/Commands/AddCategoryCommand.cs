@@ -11,18 +11,15 @@ namespace HouseholdBook.WPF.Commands
 {
     public class AddCategoryCommand : ICommand
     {
-        private event CategoryCallback CategoryCallback;
         public event EventHandler CanExecuteChanged;
 
         private readonly AddEntryViewModel _addEntryViewModel;
         private readonly ICategoryService _categoryService;
 
-        public AddCategoryCommand(AddEntryViewModel addBookingViewModel, ICategoryService categoryService, CategoryCallback categoryCallback)
+        public AddCategoryCommand(AddEntryViewModel addBookingViewModel, ICategoryService categoryService)
         {
             _addEntryViewModel = addBookingViewModel;
             _categoryService = categoryService;
-
-            CategoryCallback = categoryCallback;
         }
 
         public bool CanExecute(object parameter)
@@ -36,9 +33,11 @@ namespace HouseholdBook.WPF.Commands
 
             try
             {   
-                await _categoryService.AddCategory(_addEntryViewModel.NewCategory);
+                var category = await _categoryService.AddCategory(_addEntryViewModel.NewCategory);
+
+                _addEntryViewModel.Categories.Add(category);
+
                 Cleanup();
-                CategoryCallback?.Invoke();
             }
             catch (Exception e)
             {

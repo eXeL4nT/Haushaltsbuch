@@ -5,55 +5,27 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HouseholdBook.WPF"
       xmlns:views="clr-namespace:HouseholdBook.WPF.Views"
+      xmlns:viewModels="clr-namespace:HouseholdBook.WPF.ViewModels"
       xmlns:converters="clr-namespace:HouseholdBook.WPF.Converters"
       xmlns:componentmodel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800">
-
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <converters:AmountConverter x:Key="AmountConverter"/>
         <converters:TotalSumConverter x:Key="TotalSumConverter"/>
-        <DataTemplate x:Key="bookingPanel">
-            <Border>
-                <Grid Margin="5 0 5 0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Title}" FontWeight="Bold" FontSize="15"/>
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Category.Name}" FontSize="15"/>
-                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Date}" HorizontalAlignment="Right" FontSize="15"/>
-                    <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Amount, StringFormat=N2, ConverterCulture=de-De}" HorizontalAlignment="Right" FontSize="17">
-                        <TextBlock.Style>
-                            <Style>
-                                <Setter Property="TextBlock.Foreground" Value="{Binding Amount, Converter={StaticResource AmountConverter}}"/>
-                            </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
-                    <!--
-                    <Button Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" x:Name="BtnDelete" Command="{Binding Path=DataContext.DeleteEntryCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}" Width="20" Height="20" Background="{x:Null}" BorderThickness="0">
-                        <Image Source="../Resources/img/x-mark-64.png"/>
-                    </Button>
-                    -->
-                </Grid>
-            </Border>
-        </DataTemplate>
+        
         <CollectionViewSource x:Key="SortedBookings" Source="{Binding Bookings}">
             <CollectionViewSource.SortDescriptions>
-                <componentmodel:SortDescription PropertyName="Date" Direction="Descending"/>
-                <componentmodel:SortDescription PropertyName="Id" Direction="Descending"/>
+                <componentmodel:SortDescription PropertyName="Booking.Date" Direction="Descending"/>
+                <componentmodel:SortDescription PropertyName="Booking.Id" Direction="Descending"/>
             </CollectionViewSource.SortDescriptions>
             <CollectionViewSource.GroupDescriptions>
-                <PropertyGroupDescription PropertyName="Date" />
+                <PropertyGroupDescription PropertyName="Booking.Date" />
             </CollectionViewSource.GroupDescriptions>
         </CollectionViewSource>
     </UserControl.Resources>
-    
+
     <Grid DockPanel.Dock="Top">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -77,15 +49,26 @@
                 <ComboBox Width="150"></ComboBox>
                 <Button Width="50" Content="Pfeil R"></Button>
             </StackPanel>
-            <ScrollViewer HorizontalScrollBarVisibility="Auto" Grid.Row="1">
-                <ListBox Width="auto" ItemsSource="{Binding Source={StaticResource SortedBookings}, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True}"
-                                ItemTemplate="{StaticResource bookingPanel}" 
-                                HorizontalContentAlignment="Stretch" BorderBrush="{x:Null}" SelectedItem="{Binding SelectedBooking}">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" VirtualizingPanel.IsVirtualizingWhenGrouping="True">
+                <ListBox ItemsSource="{Binding Source={StaticResource SortedBookings}, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Stretch" VirtualizingPanel.IsVirtualizingWhenGrouping="True">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <views:BookingPanelView/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="{x:Type ListBoxItem}">
                             <Setter Property="BorderBrush" Value="LightGray" />
                             <Setter Property="BorderThickness" Value="0 0.5 0 0" />
                             <Setter Property="Margin" Value="3"/>
+                            <Setter Property="ContextMenu">
+                                <Setter.Value>
+                                    <ContextMenu>
+                                        <MenuItem Header="Ändern" Command="{Binding ChangeBookingCommand}"/>
+                                        <MenuItem Header="Löschen" Command="{Binding DeleteEntryCommand}"/>
+                                    </ContextMenu>
+                                </Setter.Value>
+                            </Setter>
                         </Style>
                     </ListBox.ItemContainerStyle>
                     <ListBox.GroupStyle>
@@ -155,5 +138,4 @@
             </Grid>
         </Grid>
     </Grid>
-    
 </UserControl>

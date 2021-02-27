@@ -10,19 +10,15 @@ namespace HouseholdBook.WPF.Commands
 {
     public class DeleteCategoryCommand : ICommand
     {
-        private event CategoryCallback CategoryCallback;
-
         public event EventHandler CanExecuteChanged;
 
-        private AddEntryViewModel _addEntryViewModel;
-        private ICategoryService _categoryService; 
+        private readonly AddEntryViewModel _addEntryViewModel;
+        private readonly ICategoryService _categoryService; 
 
-        public DeleteCategoryCommand(AddEntryViewModel addEntryViewModel, ICategoryService categoryService, CategoryCallback categoryCallback)
+        public DeleteCategoryCommand(AddEntryViewModel addEntryViewModel, ICategoryService categoryService)
         {
             _addEntryViewModel = addEntryViewModel;
             _categoryService = categoryService;
-
-            CategoryCallback = categoryCallback;
         }
 
         public bool CanExecute(object parameter)
@@ -36,8 +32,10 @@ namespace HouseholdBook.WPF.Commands
 
             try
             {
-                await _categoryService.DeleteCategory(parameter as Category);
-                CategoryCallback?.Invoke();
+                var category = parameter as Category;
+                await _categoryService.DeleteCategory(category);
+
+                _addEntryViewModel.Categories.Remove(category);
             }
             catch (Exception e)
             {

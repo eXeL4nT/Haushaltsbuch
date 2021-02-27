@@ -1,5 +1,7 @@
 ﻿using HouseholdBook.EntityFramework.Services;
+using HouseholdBook.WPF.Services;
 using HouseholdBook.WPF.ViewModels;
+using HouseholdBook.WPF.Views;
 using System;
 using System.Windows.Input;
 
@@ -9,13 +11,13 @@ namespace HouseholdBook.WPF.Commands
     {
         public event EventHandler CanExecuteChanged;
 
-        private readonly OverviewViewModel overviewViewModel;
-        private readonly IBookingService bookingService;
+        private readonly OverviewViewModel _overviewViewModel;
+        private readonly IBookingService _bookingService;
 
         public GetBookingsCommand(OverviewViewModel overviewViewModel, IBookingService bookingService)
         {
-            this.overviewViewModel = overviewViewModel;
-            this.bookingService = bookingService;
+            _overviewViewModel = overviewViewModel;
+            _bookingService = bookingService;
         }
 
         public bool CanExecute(object parameter)
@@ -25,15 +27,20 @@ namespace HouseholdBook.WPF.Commands
 
         public async void Execute(object parameter)
         {
-            overviewViewModel.ErrorMessage = string.Empty;
+            _overviewViewModel.ErrorMessage = string.Empty;
 
             try
             {
-                overviewViewModel.Bookings = await bookingService.GetBookings();
+                var bookings = await _bookingService.GetBookings();
+
+                foreach (var booking in bookings)
+                {
+                    _overviewViewModel.Bookings.Add(new BookingPanelViewModel(_overviewViewModel, booking, _bookingService));
+                }
             }
             catch (Exception e)
             {
-                overviewViewModel.ErrorMessage = $"Es ist ein Fehler beim Abrufen der Daten aufgetreten. {e.Message}";
+                _overviewViewModel.ErrorMessage = $"Es ist ein Fehler beim Abrufen der Daten aufgetreten. {e.Message}";
             }
         }
     }
