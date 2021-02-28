@@ -12,12 +12,10 @@ namespace HouseholdBook.WPF.Commands
     {
         public event EventHandler CanExecuteChanged;
 
-        private ViewModelBase _viewModel;
         private readonly Booking _booking;
 
-        public ChangeBookingCommand(ViewModelBase viewModel, Booking booking)
+        public ChangeBookingCommand(Booking booking)
         {
-            _viewModel = viewModel;
             _booking = booking;
         }
 
@@ -29,7 +27,7 @@ namespace HouseholdBook.WPF.Commands
         public void Execute(object parameter)
         {
             var dialogService = new DialogService();
-            dialogService.Instance.ShowDialog(_viewModel, _booking);
+            dialogService.Instance.ShowDialog(_booking);
         }
     }
 }

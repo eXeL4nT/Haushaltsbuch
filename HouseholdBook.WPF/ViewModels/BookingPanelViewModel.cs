@@ -3,7 +3,6 @@ using HouseholdBook.EntityFramework.Services;
 using HouseholdBook.WPF.Commands;
 using HouseholdBook.WPF.Services;
 using HouseholdBook.WPF.Views;
-using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -32,7 +31,7 @@ namespace HouseholdBook.WPF.ViewModels
             _booking = booking;
 
             DeleteEntryCommand = new DeleteEntryCommand(overviewViewModel, this, bookingService);
-            ChangeBookingCommand = new ChangeBookingCommand(this, booking);
+            ChangeBookingCommand = new ChangeBookingCommand(booking);
         }
     }
 }

@@ -34,7 +34,7 @@ namespace HouseholdBook.WPF.Services
             }
         }
 
-        public void ShowDialog(ViewModelBase viewModel, Booking booking)
+        public void ShowDialog(Booking booking)
         {
             var viewmodel = new ChangeBookingViewModel(booking);
             var view = new ChangeBookingView
